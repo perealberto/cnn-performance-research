@@ -4,3 +4,12 @@
 
 **/venv/**
 __pycache__/
+
+.ipynb_checkpoints/
+*.ipynb
+
+**/data/**
+**/models/**
+
+**/.mypy_cache/**
+**/.ruff_cache/**

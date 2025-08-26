@@ -1,8 +1,6 @@
 matplotlib
 numpy
 pyyaml
-torch
-torchvision
 tqdm
 jupyter
 jupyterlab
@@ -10,3 +8,6 @@ jupytext
 pre-commit
 ruff
 mypy
+torch
+torchvision
+--extra-index-url https://download.pytorch.org/whl/cu128
