@@ -1,0 +1,12 @@
+matplotlib
+numpy
+pyyaml
+torch
+torchvision
+tqdm
+jupyter
+jupyterlab
+jupytext
+pre-commit
+ruff
+mypy

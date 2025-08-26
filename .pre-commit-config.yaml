@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/mwouts/jupytext
+    rev: v1.17.2
+    hooks:
+      - id: jupytext
+        name: jupytext-sync
+        entry: jupytext --sync --quiet
+        language: python
+        files: ^notebooks/.*\\.py$
+        stages: [pre-commit]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.10
+    hooks:
+      - id: ruff
+        types_or: [python, pyi]
+        args: [--fix]
+      - id: ruff-format
+        types_or: [python, pyi]
+  
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.17.1
+    hooks:
+      - id: mypy
