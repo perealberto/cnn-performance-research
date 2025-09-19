@@ -9,14 +9,14 @@ from torchvision import datasets
 from torchvision.transforms import ToTensor
 
 src: Path = Path.cwd().parent
-data: Path = src / "data"
-models: Path = src / "models"
+data_dir: Path = src / "data"
+models_dir: Path = src / "models"
 
 assert src.exists()
-if not data.exists():
-    data.mkdir()
-if not models.exists():
-    models.mkdir()
+if not data_dir.exists():
+    data_dir.mkdir()
+if not models_dir.exists():
+    models_dir.mkdir()
 
 # ensure using cuda device (install cuda utilities from torch)
 device: torch.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -24,10 +24,10 @@ print(f"Using {device} device")
 
 # +
 training_data: datasets.MNIST = datasets.MNIST(
-    root=data, transform=ToTensor(), download=True
+    root=data_dir, transform=ToTensor(), download=True
 )
 test_data: datasets.MNIST = datasets.MNIST(
-    root=data, train=False, transform=ToTensor(), download=True
+    root=data_dir, train=False, transform=ToTensor(), download=True
 )
 
 figure = plt.figure(figsize=(8, 8))
@@ -145,9 +145,7 @@ for t in range(epochs):
     train_loop(train_dataloader, model, loss_fn, optimizer, device)
     test_loop(test_dataloader, model, loss_fn, device)
 print("Done!")
-# -
 
-torch.save(model, models / "nn_base.pth")
 
 # +
 test_features, test_labels = next(iter(test_dataloader))
