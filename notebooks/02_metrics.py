@@ -332,7 +332,7 @@ print(
     f"Discordants: Success NN / Fails CNN = n01={comp['n01']}, Fails NN / Success CNN = n10={comp['n10']}"
 )
 print(
-    f"Total discordants = {comp['n_discordantes']}, p-value = {comp['p_value']:.4f}, p-value < alpha (0.05) = {comp['p_value'] < 0.05}"
+    f"Total discordants = {comp['n_discordant']}, p-value = {comp['p_value']:.4f}, p-value < alpha (0.05) = {comp['p_value'] < 0.05}"
 )
 
 

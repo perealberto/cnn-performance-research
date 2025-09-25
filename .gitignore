@@ -10,6 +10,7 @@ __pycache__/
 
 **/data/**
 **/models/**
+**/images/**
 
 **/.mypy_cache/**
 **/.ruff_cache/**
