@@ -1,11 +1,14 @@
 from collections import defaultdict
 from pathlib import Path
+from typing import Callable, Optional
 
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+from matplotlib import colormaps as cm
 from torch import nn
+from torch.nn import functional as F
 from torch.utils.data import DataLoader
 
 
@@ -209,117 +212,154 @@ def show_avg_saliency_by_class(
 
 
 class GradCAM:
-    """
-    GradCAM is a class for generating Gradient-weighted Class Activation Maps (Grad-CAM)
-    to visualize the regions of an input image that are most relevant for a model's predictions.
-    Attributes:
-        model (nn.Module): The neural network model for which Grad-CAM is applied.
-        target_layer (nn.Module): The last convolutional layer of the model, automatically detected.
-        gradients (torch.Tensor | None): Gradients of the target layer, recorded during backpropagation.
-        activations (torch.Tensor | None): Activations of the target layer, recorded during the forward pass.
-        device (torch.device): The device (CPU or GPU) on which the model and input tensors are processed.
-    Methods:
-        __init__(model: nn.Module, device: torch.device | None = None):
-            Initializes the GradCAM instance with the given model and device.
-        _get_last_conv_layer(model: nn.Module) -> nn.Module:
-            Identifies and returns the last convolutional layer in the model.
-            Raises a ValueError if no convolutional layer is found.
-        _forward_hook(module, input, output):
-            A forward hook to capture the activations of the target layer during the forward pass.
-        _full_backward_hook(module, grad_input, grad_output):
-            A backward hook to capture the gradients of the target layer during backpropagation.
-        compute_heatmap(x: torch.Tensor) -> tuple[np.ndarray, int, float]:
-            Computes the Grad-CAM heatmap for a single input image tensor.
-            Args:
-                x (torch.Tensor): The input image tensor of shape (1, C, H, W).
-            Returns:
-                tuple[np.ndarray, int, float]: A tuple containing:
-                    - heatmap (np.ndarray): The Grad-CAM heatmap as a 2D NumPy array.
-                    - class_idx (int): The predicted class index.
-                    - predicted_prob (float): The predicted probability for the class.
-    """
-
     def __init__(self, model: nn.Module, device: torch.device | None = None):
         self.model = model
-        self.target_layer = self._get_last_conv_layer(model)
-        self.gradients = None
-        self.activations = None
+        self.target_layer = self._find_last_conv_layer(model)
+        if self.target_layer is None:
+            raise ValueError("No convolutional layer found in the model.")
+
+        self._fwd_handle = None
+        self._bwd_handle = None
+        self._acts: Optional[torch.Tensor] = None
+        self._grads: Optional[torch.Tensor] = None
+        self._orig_training = model.training
+
         self.device = device if device else next(model.parameters()).device
 
-        self.target_layer.register_forward_hook(self._forward_hook)
-        self.target_layer.register_full_backward_hook(self._full_backward_hook)
+    # Manage hooks with context manager
 
-    def _get_last_conv_layer(self, model: nn.Module) -> nn.Module:
+    def __enter__(self):
+        self.model.eval()
+        assert self.target_layer
+        self._fwd_handle = self.target_layer.register_forward_hook(self._store_acts)
+        self._bwd_handle = self.target_layer.register_full_backward_hook(
+            self._store_grads
+        )
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        if self._fwd_handle:
+            self._fwd_handle.remove()
+        if self._bwd_handle:
+            self._bwd_handle.remove()
+        self.model.train(self._orig_training)
+
+    # Hooks
+
+    def _store_acts(self, module, input, output):
+        self._acts = output
+
+    def _store_grads(self, module, grad_input, grad_output):
+        self._grads = grad_output[0]
+
+    @torch.no_grad()
+    def _resize_like_input(self, cam: torch.Tensor, x: torch.Tensor) -> torch.Tensor:
+        return F.interpolate(
+            cam, size=x.shape[2:], mode="bilinear", align_corners=False
+        )
+
+    def generate(
+        self,
+        x: torch.Tensor,
+        class_idx: Optional[int] = None,
+        reduction: Callable = torch.mean,
+    ) -> torch.Tensor:
+        """
+        Generate Grad-CAM heatmaps for a batch.
+        Args:
+            x: input tensor (B, C, H, W)
+            class_idx: if None, uses argmax over logits per-sample.
+            reduction: function to reduce gradients over spatial dims before channel weights.
+                       Default is mean, equivalent to GAP on grads.
+
+        Returns:
+            cam: (B, 1, H, W) in [0,1], resized to input size.
+        """
+        device = next(self.model.parameters()).device
+        x = x.to(device)
+        self.model.eval()
+
+        if x.dim() < 3:
+            x = x.unsqueeze(0)
+        if x.dim() == 3:
+            x = x.unsqueeze(0)
+
+        with torch.enable_grad():
+            logits = self.model(x)
+
+        if class_idx is None:
+            target_scores = logits.softmax(dim=1).argmax(dim=1)
+        else:
+            target_scores = torch.as_tensor([class_idx] * x.shape[0], device=device)
+
+        scores = logits.gather(1, target_scores.unsqueeze(1)).squeeze(1)
+
+        self.model.zero_grad(set_to_none=True)
+        scores.sum().backward(retain_graph=True)
+
+        if self._acts is None or self._grads is None:
+            raise RuntimeError("Activations or gradients have not been recorded.")
+
+        acts = self._acts
+        grads = self._grads
+
+        weights = reduction(grads, dim=(2, 3), keepdim=True)
+        weights_relu = F.relu(weights)
+        cam = (weights_relu * acts).sum(dim=1, keepdim=True)
+        cam = F.relu(cam)
+        cam = cam / (cam.amax(dim=(2, 3), keepdim=True) + 1e-12)
+        cam = self._resize_like_input(cam, x)
+
+        return cam
+
+    @staticmethod
+    def overlay_on_image(
+        img: torch.Tensor,
+        cam: torch.Tensor,
+        alpha: float = 0.65,
+        colormap: str = "jet",
+    ) -> torch.Tensor:
+        """
+        Alpha-blend CAM on top of the input image.
+        Args:
+            img: (B, C, H, W) in [0,1] or normalized; if 1-channel, it will be stacked to 3.
+            cam: (B, 1, H, W) in [0,1]
+            alpha: blending factor for CAM.
+            colormap: Matplotlib colormap name.
+
+        Returns:
+            overlay: (B, 3, H, W)
+        """
+
+        if img.dim() > 4 or img.dim() < 2 or cam.dim() > 4 or cam.dim() < 4:
+            raise ValueError("img and heatmap must be 2D, 3D or 4D tensor")
+
+        # prepare image dims to rgb == [B, 3, W, H]
+        if img.dim() < 3:
+            img = img.unsqueeze(0)
+        if img.dim() == 3:
+            img = img.unsqueeze(0)
+        img = img.repeat(1, 3, 1, 1).permute(0, 2, 3, 1)
+
+        # prepare heat map to rgb == [B, 3, W, H]
+        cam_np = cam.squeeze().cpu().numpy()
+        cmap = cm.get_cmap(colormap)
+        heatmap = cmap(cam_np)[..., :3]
+        heatmap = torch.from_numpy(heatmap).unsqueeze(0).to(img.device)
+
+        overlay = (1 - alpha) * img + alpha * heatmap
+        overlay = overlay.clamp(0, 1)
+        if overlay.dim() < 3:
+            overlay = overlay.unsqueeze(0)
+        if overlay.dim() == 3:
+            overlay = overlay.unsqueeze(0)
+
+        return overlay
+
+    @staticmethod
+    def _find_last_conv_layer(model: nn.Module) -> Optional[nn.Module]:
+        last_conv = None
         for layer in model.modules():
             if isinstance(layer, nn.Conv2d):
-                return layer
-        raise ValueError("No convolutional layer found in the model.")
-
-    def _forward_hook(self, module, input, output):
-        self.activations = output.detach()
-
-    def _full_backward_hook(self, module, grad_input, grad_output):
-        self.gradients = grad_output[0].detach()
-
-    def compute_heatmap(self, x: torch.Tensor) -> tuple[np.ndarray, int, float]:
-        """Compute Grad-CAM heatmap for a single input image tensor."""
-        self.model.eval()
-        x = x.to(self.device).requires_grad_(True)
-
-        logits = self.model(x)
-        self.model.zero_grad()
-        class_idx = logits.argmax(dim=1).item()
-
-        one_hot = torch.zeros_like(logits)
-        one_hot[0, class_idx] = 1
-        logits.backward(gradient=one_hot, retain_graph=True)
-
-        assert self.gradients is not None, "Gradients have not been computed."
-        assert self.activations is not None, "Activations have not been recorded."
-
-        weights = torch.mean(self.gradients, dim=(2, 3), keepdim=True)
-        heatmap = torch.sum(weights * self.activations, dim=1, keepdim=True)
-        heatmap = torch.relu(heatmap)  # ReLU removes negative values
-        heatmap /= torch.max(heatmap)  # Normalize to [0, 1]
-
-        probs = torch.softmax(logits, dim=1)
-        predicted_prob = probs[0, class_idx].item()
-
-        return heatmap.squeeze().cpu().numpy(), class_idx, predicted_prob
-
-
-def compute_superimposed_image(
-    img: torch.Tensor | np.ndarray, heatmap: np.ndarray, alpha: float = 0.4
-) -> np.ndarray:
-    """
-    Overlay a heatmap (Grad-CAM or saliency map) on the original image.
-
-    Args:
-        img (torch.Tensor | np.ndarray): The original image as a tensor or numpy array.
-        heatmap (np.ndarray): The heatmap to overlay (Grad-CAM or saliency map).
-        alpha (float): The transparency factor for the heatmap overlay.
-
-    Returns:
-        np.ndarray: The normalized superimposed image in RGB format.
-    """
-    if isinstance(img, torch.Tensor):
-        img = img.cpu().detach().numpy()
-
-    if img.ndim >= 3 and img.shape[0] in {1, 3}:
-        img = img.squeeze(0).transpose(1, 2, 0)
-    if img.ndim == 2 or img.shape[-1] != 3:
-        img = cv2.cvtColor((255 * np.array(img)).astype(np.uint8), cv2.COLOR_GRAY2BGR)
-
-    heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
-    heatmap = (255 * heatmap).astype(np.uint8)
-    heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
-
-    superimposed_img = cv2.addWeighted(img, 1 - alpha, heatmap, alpha, 0)
-
-    # Ensure the output image is in RGB format
-    superimposed_img = cv2.cvtColor(superimposed_img, cv2.COLOR_BGR2RGB)
-
-    # Normalize the superimposed image to the range [0, 1]
-    superimposed_img = superimposed_img.astype(np.float32) / 255.0
-
-    return superimposed_img
+                last_conv = layer
+        return last_conv
