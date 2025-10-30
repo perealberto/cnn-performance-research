@@ -1,0 +1,165 @@
+\appendix
+\begin{appendices}
+
+\chapter{Desarrollo Matemático de la Retropropagación} \label{anexo:retropropagacion}
+
+Antes de explicar el algoritmo de retropropagación vamos a redefinir la sintaxis, inspirándonos en la planteada por Nielsen \citeyear{nn_dl__michael_nielsen_2015}, con el objetivo de facilitar la comprensión de esta sección.
+
+\begin{itemize}
+	\item $w_{jk}^l$ es el peso asociado a la conexión entre la neurona $j$-ésima de la capa $l$ y la $k$-ésima de la capa $l-1$.
+	\item $b_{j}^l$ es el sesgo asociado a la neurona $j$-ésima de la capa $l$.
+	\item $z_{j}^l$ es la combinación de las entradas a la neurona $j$-ésima de la capa $l$.
+	\item $a_{j}^l$ es la activación de la neurona $j$-ésima de la capa $l$.
+\end{itemize}
+
+Aplicando esta nomenclatura, podemos reescribir expresiones anteriores como la combinación de las entradas de una neurona \eqref{f_bp:combinacion} o su activación \eqref{f_bp:activacion}.
+
+\begin{align}
+	z_{j}^l = \sum_k w_{jk}^l a_{j}^{l-1} + b_j^l\label{f_bp:combinacion} \\
+	a_j^l = \sigma(z_j^l)\label{f_bp:activacion}
+\end{align}
+
+Además, siguiendo convenciones de la literatura científica, podemos simplificar estas expresiones anteriores convirtiéndolas a la forma matricial, ya no solo porque sea una forma más fácil de escribir, sino porque computacionalmente los ordenadores están mejor preparados para realizar estas operaciones matriciales.
+
+\begin{itemize}
+	\item $w^l$ como la matriz de pesos $w_{jk}^l$ de la capa $l$.
+	\item $b^l$ como el vector de sesgos $b_j^l$ de la capa $l$.
+	\item $z^l$ como el vector de combinaciones $z_j^l$ de la capa $l$.
+	\item $a^l$ como el vector de activaciones o las salidas $a_j^l$ de la capa $l$.
+\end{itemize}
+
+De esta forma, denotamos a la combinación de las entradas de una neurona \ref{f_bp:combinacion_mat} y a su activación \ref{f_bp:activacion_mat} como
+
+\begin{align}
+	z^l = w^l a^{l-1} + b^l \label{f_bp:combinacion_mat}\\
+	a^l = \sigma(z^l) \label{f_bp:activacion_mat}
+\end{align}
+
+donde $\sigma$ se refiere a un operador elemento a elemento del vector $z^l$, es decir, $\sigma(z^l)_j = \sigma(z_j^l)$.
+
+Retomando el algoritmo de retropropagación, el objetivo es entender cómo los cambios introducidos en los pesos y sesgos de la red modificarán la salida de la misma. Dicho de otra forma, tendremos que calcular a partir de la salida global de la red, las derivadas parciales de todos y cada uno de los parámetros involucrados en el cálculo. Para ello, la función de coste elegida para la red debe cumplir dos premisas:
+
+En primer lugar, el coste total de la red debe poder expresarse como la media de los costes parciales. Es decir, $C = \frac{1}{n}\sum_i c_i$ para cada salida $i$ de la red. Por ejemplo, en el caso del error cuadrático medio \eqref{f_error:cuadratico} sería $c_x = \frac{1}{2}(y-a^L)^2$, donde $L$ denota la última capa de la red.
+
+En segundo lugar, su expresión debe estar escrita en función de los parámetros de la red, o lo que es lo mismo, de las salidas de la red. Para el caso anterior del error cuadrático $C = \frac{1}{2}\sum_j(y_j-a_j^L)^2$. De esta forma, aprovechando la regla de la cadena, podremos propagar hacia atrás el error obtenido en la salida, calculando los costes parciales asociados a cada uno de los parámetros \cite{nn_dl__michael_nielsen_2015}.
+
+\subsubsection{Ecuaciones detrás de la retropropagación}
+
+Existen cuatro ecuaciones fundamentales para describir el proceso de retropropagación en una red \cite{nn_dl__michael_nielsen_2015}. Todas ellas se basan en el error que hemos mencionado anteriormente. Definimos el error $\delta_j^l$ de la neurona $j$ en la capa $l$ como:
+
+\begin{equation}\label{f_bp:error}
+	\delta_j^l = \frac{\partial C}{\partial z_j^l}
+\end{equation}
+
+Siguiendo los principios de notación anteriores, podemos expresar el vector de errores de la capa $l$ como $\delta^l$. La retropropagación nos proporcionará un método de calcular $\delta^l$ para cada capa de la red para así poder obtener los valores que realmente nos interesan, $\frac{\partial C}{\partial w_{jk}^l} \text{y} \frac{\partial C}{\partial b_j^l}$.
+
+\begin{enumerate}
+	\item \textbf{Error en la última capa de la red} $\delta^L$:
+
+	Aplicando la regla de la cadena podemos expresar el error \eqref{f_bp:error} respecto a la activación de la capa $L$,
+
+	\begin{equation}
+		\delta_j^L = \sum_k \frac{\partial C}{\partial a_k^L} \frac{\partial a_k^L}{\partial z_j^L},
+	\end{equation}
+
+	donde $\frac{\partial a_k^l}{\partial z_j^l}$ se desvanece para $k \neq j$. Luego, teniendo en cuenta que $a_j^L = \sigma(z_j^L)$, podemos reescribir el segundo término como
+
+	\begin{equation}\label{f_bp:error_ultima_capa}
+		\delta^L = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L),
+	\end{equation}
+
+	la forma de esta expresión nos permite trabajar elemento a elemento. Su forma matricial sería
+
+	\begin{equation}\label{f_bp:error_ultima_capa_mat}
+		\delta^L = \nabla_a C \odot \sigma'(z^L).
+	\end{equation}
+
+	\item \textbf{Error} $\delta^l$ \textbf{en función del error de la siguiente capa} $\delta^{l+1}$:
+
+	Para la expresión del error definida anteriormente \eqref{f_bp:error}, es muy simple definir el error en la siguiente capa como $\delta_k^{l+1} = \frac{\partial C}{\partial z_k^{l+1}}$. Ahora, aplicando la regla de la cadena
+
+	\begin{equation}
+		\delta_j^l = \frac{\partial C}{\partial z_j^l} = \sum_k \frac{\partial C}{\partial z_k^{l+1}} \frac{\partial z_k^{l+1}}{\partial z_j^l} = \sum_k \frac{\partial z_k^{l+1}}{\partial z_j^l}\delta_k^{l+1},
+	\end{equation}
+
+	hemos sustituido siguiendo la definición de $\delta_k^{l+1}$. Luego, teniendo en cuenta que
+
+	\begin{equation}
+		z_k^{l+1} = \sum_k w_{kj}^{l+1}a_j^l + b_k^{l+1} = \sum_j w_{kj}^{l+1}\sigma(z_j^l) + b_k^{l+1},
+	\end{equation}
+
+	podemos derivar, obteniendo
+
+	\begin{equation}
+		\frac{\partial z_k^{l+1}}{\partial z_j^l} = w_{kj}^{l+1}\sigma'(z_j^l).
+	\end{equation}
+
+	Por tanto, la expresión final que nos queda es
+
+	\begin{equation}\label{f_bp:error_intermedio}
+		\delta_j^l = \sum_k w_{kj}^{l+1}\delta_k^{l+1}\sigma'(z_j^l),
+	\end{equation}
+
+	que reescrito a la forma matricial, quedaría como
+
+	\begin{equation}\label{f_bp:error_intermedio_mat}
+		\delta^l = ((w^l)^T\delta^{l+1}) \odot \sigma'(z^l).
+	\end{equation}
+
+	\item \textbf{Ratio de cambio del error respecto a cualquier sesgo de la red}:
+
+	Representamos el ratio de cambio del error respecto del sesgo como $\frac{\partial C}{\partial b_j^l}$. Aplicando la regla de la cadena podemos llegar a
+
+	\begin{equation}
+		\frac{\partial C}{\partial b_j^l} = \frac{\partial C}{\partial z_j^l} \frac{\partial z_j^l}{\partial b_j^l},
+	\end{equation}
+
+	donde, aplicando una sustitución por la definición del error \eqref{f_bp:error} nos queda
+
+	\begin{equation}\label{f_bp:ratio_sesgo}
+		\frac{\partial C}{\partial b_j^l} = \delta_j^l \frac{\partial z_j^l}{\partial b_j^l} = \delta_j^l \frac{\partial \left[\sum_k w_{kj}^l a_k^{l-1} + b_j^l \right]}{\partial b_j^l} = \delta_j^l,
+	\end{equation}
+
+	reescribiendo matricialmente,
+
+	\begin{equation}\label{f_bp:ratio_sesgo_mat}
+		\frac{\partial C}{\partial b^l} = \delta^l,
+	\end{equation}
+
+	es decir, la variación del sesgo en cualquier capa es equivalente al error percibido en esa capa.
+
+	\item \textbf{Ratio de cambio del error respecto a cualquier peso de la red}:
+
+	De forma similar, podemos obtener la variación del error respecto de cualquier peso de la red
+
+	\begin{equation}\label{f_bp:ratio_peso}
+		\frac{\partial C}{\partial w_{jk}^l} = \frac{\partial C}{\partial z_j^l}\frac{\partial z_j^l}{\partial w_{jk}^l} = \delta_j^l \frac{\partial \left[ \sum_k w_{kj}^l a_k^{l-1} + b_j^l \right]}{\partial w_{jk}^l} = a_k^{l-1} \delta_j^l,
+	\end{equation}
+
+	reescrito matricialmente como
+
+	\begin{equation}\label{f_bp:ratio_peso_mat}
+		\frac{\partial C}{\partial w^l} = a^{l-1} \delta^l.
+	\end{equation}
+\end{enumerate}
+
+\subsubsection{El algoritmo de retropropagación}
+
+Gracias a las ecuaciones tenemos una forma de calcular el gradiente de la función de coste, ahora vamos a ver los pasos que lleva a cabo la red en el entrenamiento \cite{nn_dl__michael_nielsen_2015}:
+
+\begin{enumerate}
+	\item \textbf{Entrada} x: calculamos las activaciones $a^1$ correspondientes a la primera capa de la red.
+	\item \textbf{Propagación} o \textbf{feedforward}: para cada $l = 2, 3, \dots , L$ calculamos $z^l$ y $a^l$.
+	\item \textbf{Error de salida}: al terminar una iteración completa sobre la red, calculamos el error en la última capa $\delta^L$.
+	\item \textbf{Retropropagamos el error}: para cada $l = l-1, l-2, \dots, 2$ calculamos el error $\delta^l$ en función del error en la capa siguiente $\delta^{l+1}$.
+	\item \textbf{Salida}: calculamos el gradiente de la función de coste, lo que conlleva averiguar la variación del error respecto de los parámetros de la red.
+\end{enumerate}
+
+Con este algoritmo podemos calcular el gradiente de la función de coste respecto de los parámetros de la red para una entrada determinada. Sin embargo, en un entorno práctico lo que nos interesa es poder entrenar el modelo actualizando múltiples veces los parámetros hasta alcanzar cierta condición de parada. Por ello, se emplea lo que se conoce como el \textit{descenso estocástico del gradiente} \cite{dl__goodfellow_2016}. Para $N$ ejemplos de entrada $\left[(x_1,y_1), (x_2,y_2), \dots, (x_n,y_n)\right]$ realizaríamos el anterior algoritmo $N$ veces, de forma que al calcular el gradiente de la función de coste podamos aplicar la regla delta y actualizar los parámetros de la siguiente forma:
+
+\begin{align}\label{f_bp:regla_delta}
+	w^l \leftarrow w^l - \eta\delta^l(a^{l-1})^T \\
+	b^l \leftarrow b^l - \eta\delta^l.
+\end{align}
+
+\end{appendices}

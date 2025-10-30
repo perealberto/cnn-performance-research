@@ -1,0 +1,61 @@
+\documentclass[12pt]{report}
+
+% Paquetes LaTeX y estilos globales
+\input{etc/pkgs}
+\input{etc/style}
+\newcommand{\mj}[1]{{\color{purple}{#1}}} %changes suggested by Mariajo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Variables para la portada
+\setTitle{Entendiendo las Redes Convolucionales}
+\setAuthor{Alberto Perea León} % Si hay más de un autor, separarlos con \\
+\setDegree{Grado en Ingeniería Informática - Ingeniería del Software} % Cambiar si es necesario
+\setSupervisor{María José Jiménez Rodríguez} % Si hay más de un tutor, separarlos con \\
+\setDepartment{Matemática Aplicada I}
+\setMonth{octubre} % Dejar sólo el mes de la convocatoria en que se presenta el trabajo
+\setYear{2025/26} % Por ejemplo, 2022/23
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setDedication{Aquí la dedicatoria del trabajo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Comienzo del documento
+\begin{document}
+
+    % Portada y secciones no numeradas
+    \input{sections/00_portada}
+    \input{sections/00_agradecimientos}
+    \input{sections/00_resumen}
+
+    % Índice del documento y de figuras
+    \begingroup
+        % Los enlaces son normalmente azules, pero en los índices se configuran a negro para que no aparezca todo azul
+        \hypersetup{linkcolor=black}
+        \tableofcontents
+        \listoffigures
+    \endgroup
+
+    % Cambia el estilo de números de página de romanos a normal
+    \clearpage\pagenumbering{arabic}
+
+    % Capítulos del trabajo
+    \input{sections/01_Introduccion}
+    \input{sections/02_Redes_Neuronales}
+    \input{sections/03_Redes_Neuronales_Convolucionales}
+    \input{sections/04_Herramientas_de_Visualizacion}
+    \input{sections/05_Experimentacion}
+    \input{sections/06_Conclusiones_y_Futuras_Decisiones}
+    \input{sections/07_Anexos.tex}
+
+    % Glosario y acrónimos
+    \printglossaries
+
+    % Bibliografía
+    \bibliographystyle{unsrtnat}
+    \bibliography{bibliografia.bib}
+
+
+% Fin del documento
+\end{document}

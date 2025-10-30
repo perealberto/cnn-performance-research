@@ -1,0 +1,51 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Redes Neuronales Artificiales}{2}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Arquitectura de una Red Neuronal}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Las capas}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}La neurona}{4}{subsection.2.1.2}%
+\contentsline {subsubsection}{Función de Combinación}{5}{subsubsection*.7}%
+\contentsline {subsubsection}{Función de Activación}{5}{subsubsection*.8}%
+\contentsline {paragraph}{Perceptrón}{6}{section*.9}%
+\contentsline {paragraph}{Sigmoide}{7}{section*.10}%
+\contentsline {paragraph}{ReLU}{7}{section*.11}%
+\contentsline {section}{\numberline {2.2}Entrenamiento}{8}{section.2.2}%
+\contentsline {paragraph}{Preparación de los Datos}{8}{section*.12}%
+\contentsline {subsection}{\numberline {2.2.1}Retropropagación}{10}{subsection.2.2.1}%
+\contentsline {paragraph}{Descenso del Gradiente}{10}{section*.15}%
+\contentsline {paragraph}{Actualización de los Parámetros}{13}{section*.18}%
+\contentsline {paragraph}{La Regla de la Cadena}{14}{section*.19}%
+\contentsline {subsection}{\numberline {2.2.2}Generalización y Regularización}{16}{subsection.2.2.2}%
+\contentsline {paragraph}{Problemas comunes en el entrenamiento}{16}{section*.22}%
+\contentsline {section}{\numberline {2.3}Limitaciones de las Redes Neuronales Tradicionales}{18}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Redes Neuronales Convolucionales}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Arquitectura de una Red Neuronal Convolucional}{21}{section.3.1}%
+\contentsline {paragraph}{Capa convolucional}{21}{section*.27}%
+\contentsline {paragraph}{Capa de activación}{23}{section*.31}%
+\contentsline {paragraph}{Capa de pooling}{23}{section*.33}%
+\contentsline {paragraph}{Capa completamente conexa}{24}{section*.35}%
+\contentsline {section}{\numberline {3.2}Funcionamiento Interno: Filtrado, Stride y Padding}{24}{section.3.2}%
+\contentsline {paragraph}{Dimensiones del filtro}{25}{section*.36}%
+\contentsline {paragraph}{Stride}{25}{section*.37}%
+\contentsline {paragraph}{Padding}{25}{section*.39}%
+\contentsline {section}{\numberline {3.3}Aprendizaje y Optimización de Filtros}{26}{section.3.3}%
+\contentsline {paragraph}{Retropropagación en las capas convolucionales}{26}{section*.41}%
+\contentsline {paragraph}{Optimización}{27}{section*.42}%
+\contentsline {subsection}{\numberline {3.3.1}Visualización de activaciones}{27}{subsection.3.3.1}%
+\contentsline {chapter}{\numberline {4}Herramientas de Visualización}{28}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Mapas de Características y Activaciones}{28}{section.4.1}%
+\contentsline {paragraph}{Activaciones Neuronales}{29}{section*.44}%
+\contentsline {section}{\numberline {4.2}Métodos Basados en el Gradiente}{29}{section.4.2}%
+\contentsline {paragraph}{Mapas de Saliencia (Saliency Maps)}{29}{section*.45}%
+\contentsline {paragraph}{Grad-CAM (Gradient-weighted Class Activation Mapping)}{30}{section*.47}%
+\contentsline {chapter}{\numberline {5}Experimentación}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conjunto de datos: MNIST}{31}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Métricas de Evaluación}{32}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Implementando una Red Neuronal para Clasificar Números}{35}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Implementando una Red Convolucional para Clasificar Números}{36}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Discusión}{36}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Conclusiones y Futuras Decisiones}{37}{chapter.6}%
+\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Desarrollo Matemático de la Retropropagación}{38}{appendix.1.Alph1}%
+\contentsline {subsubsection}{Ecuaciones detrás de la retropropagación}{39}{subsubsection*.51}%
+\contentsline {subsubsection}{El algoritmo de retropropagación}{41}{subsubsection*.52}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{43}{appendix*.53}%

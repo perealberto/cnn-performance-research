@@ -1,0 +1,168 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Zhang et~al.(2023)Zhang, Lipton, Li, and Smola]{zhang2023dive}
+Aston Zhang, Zachary~C. Lipton, Mu~Li, and Alexander~J. Smola.
+\newblock \emph{Dive into Deep Learning}.
+\newblock Cambridge University Press, 2023.
+\newblock \url{https://D2L.ai}.
+
+\bibitem[Krizhevsky et~al.(2012)Krizhevsky, Sutskever, and
+  Hinton]{Krizhevsky2012ImageNetCW}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E. Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock \emph{Communications of the ACM}, 60:\penalty0 84 -- 90, 2012.
+\newblock URL \url{https://api.semanticscholar.org/CorpusID:195908774}.
+
+\bibitem[goo()]{googledev-rocauc}
+{Classification: ROC and AUC}.
+\newblock URL
+  \url{https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc}.
+
+\bibitem[Kulik and Nikonets(2009)]{examples_nn__kulik_2009}
+SD~Kulik and DA~Nikonets.
+\newblock Examples of application of the neural networks in techniques for the
+  forensic handwriting expert.
+\newblock \emph{Neurocomputers: design and application}, 9:\penalty0 61--85,
+  2009.
+
+\bibitem[Snyder and Stormo(1993)]{nn_dna_sequences__snyder_1993}
+Eric~E. Snyder and Gary~D. Stormo.
+\newblock Identification of coding regions in genomic dna sequences: an
+  application of dynamic programming and neural networks.
+\newblock \emph{Nucleic Acids Research}, 21\penalty0 (3):\penalty0 607--613, 02
+  1993.
+\newblock ISSN 0305-1048.
+\newblock \doi{10.1093/nar/21.3.607}.
+\newblock URL \url{https://doi.org/10.1093/nar/21.3.607}.
+
+\bibitem[Mahata et~al.(2019)Mahata, Das, and
+  Bandyopadhyay]{machine_translation__mahata_2019}
+Sainik~Kumar Mahata, Dipankar Das, and Sivaji Bandyopadhyay.
+\newblock Mtil2017: Machine translation using recurrent neural network on
+  statistical machine translation.
+\newblock \emph{Journal of Intelligent Systems}, 28\penalty0 (3):\penalty0
+  447--453, 2019.
+
+\bibitem[Nuruzzaman and
+  Hussain(2018)]{chatbot_customer_service__nuruzzaman_2018}
+Mohammad Nuruzzaman and Omar~Khadeer Hussain.
+\newblock A survey on chatbot implementation in customer service industry
+  through deep neural networks.
+\newblock In \emph{2018 IEEE 15th international conference on e-business
+  engineering (ICEBE)}, pages 54--61. IEEE, 2018.
+
+\bibitem[Chowanda and Sutoyo(2019)]{conv_nn_face_recog__chowanda_2019}
+Andry Chowanda and Rhio Sutoyo.
+\newblock Convolutional neural network for face recognition in mobile phones.
+\newblock \emph{ICIC Express Letters}, 13\penalty0 (7):\penalty0 569--574,
+  2019.
+
+\bibitem[Saleem et~al.(2023)Saleem, Malekian, and
+  Munir]{slam_vehicles__saleem_2023}
+Hajira Saleem, Reza Malekian, and Hussan Munir.
+\newblock Neural network-based recent research developments in slam for
+  autonomous ground vehicles: A review.
+\newblock \emph{IEEE Sensors Journal}, 23\penalty0 (13):\penalty0 13829--13858,
+  2023.
+
+\bibitem[Gonz{\'a}lez and Hernando(1995)]{rna_fundamentos__hilera_2021}
+Jos{\'e} Ram{\'o}n~Hilera Gonz{\'a}lez and V{\'\i}ctor Jos{\'e}~Mart{\'\i}nez
+  Hernando.
+\newblock \emph{Redes neuronales artificiales: fundamentos, modelos y
+  aplicaciones}.
+\newblock RA-MA Editorial, 1995.
+
+\bibitem[Thakur and Konde(2021)]{nn_fundamentals__thakur_2021}
+Amey Thakur and Archit Konde.
+\newblock Fundamentals of neural networks.
+\newblock \emph{International Journal for Research in Applied Science and
+  Engineering Technology}, 9:\penalty0 407--426, 08 2021.
+\newblock \doi{10.22214/ijraset.2021.37362}.
+
+\bibitem[Inc.(2024)]{yolo_docs__2024}
+Ultralytics Inc.
+\newblock Mnist - ultralytics yolo docs, 2024.
+\newblock URL \url{https://docs.ultralytics.com/es/datasets/classify/mnist/}.
+
+\bibitem[Hecht-Nielsen(1988)]{neurocomputing__hecht_nielsen_1998}
+Robert Hecht-Nielsen.
+\newblock Neurocomputing: picking the human brain.
+\newblock \emph{IEEE spectrum}, 25\penalty0 (3):\penalty0 36--41, 1988.
+
+\bibitem[Rivera(2005)]{intro_rna__rivera_2005}
+Eduardo Rivera.
+\newblock Introducci{\'o}n a las redes neuronales artificiales.
+\newblock \emph{Universidad Don Bosco}, 2005.
+
+\bibitem[Chollet and Chollet(2021)]{dl_python__chollet_2021}
+Francois Chollet and Fran{\c{c}}ois Chollet.
+\newblock \emph{Deep learning with Python}.
+\newblock Simon and Schuster, 2021.
+
+\bibitem[Gordon et~al.(1986)Gordon, Boti, and
+  Mar{\'\i}n]{analisis_matematico__gordon_1995}
+Fernando~Bombal Gordon, Gabriel~Vera Boti, and Luis~Rodr{\'\i}guez Mar{\'\i}n.
+\newblock \emph{Problemas de an{\'a}lisis matem{\'a}tico}.
+\newblock Alfa Centauro, S.A., 1986.
+
+\bibitem[{Casas Roma, J.}(2020)]{dl_fundamentos__casas_roma_2020}
+{Lozano Bagén, T.} y~{Bosch Rué, A.} {Casas Roma, J.}
+\newblock \emph{Deep learning: Principios y fundamentos}.
+\newblock Editorial UOC, 2020.
+
+\bibitem[Nielsen(2015)]{nn_dl__michael_nielsen_2015}
+Michael~A Nielsen.
+\newblock \emph{Neural networks and deep learning}, volume~25.
+\newblock Determination press San Francisco, CA, USA, 2015.
+
+\bibitem[Rosenblatt(1958)]{perceptron__rosenblatt_1958}
+Frank Rosenblatt.
+\newblock The perceptron: a probabilistic model for information storage and
+  organization in the brain.
+\newblock \emph{Psychological review}, 65\penalty0 (6):\penalty0 386, 1958.
+
+\bibitem[Goodfellow et~al.(2016)Goodfellow, Bengio, Courville, and
+  Bengio]{dl__goodfellow_2016}
+Ian Goodfellow, Yoshua Bengio, Aaron Courville, and Yoshua Bengio.
+\newblock \emph{Deep learning}, volume~1.
+\newblock MIT press Cambridge, 2016.
+
+\bibitem[Lecun et~al.(1998)Lecun, Bottou, Bengio, and Haffner]{lecun-98}
+Y.~Lecun, L.~Bottou, Y.~Bengio, and P.~Haffner.
+\newblock Gradient-based learning applied to document recognition.
+\newblock \emph{Proceedings of the IEEE}, 86\penalty0 (11):\penalty0
+  2278--2324, 1998.
+\newblock \doi{10.1109/5.726791}.
+
+\bibitem[ima()]{imagenet-web}
+{ImageNet}.
+\newblock URL \url{https://image-net.org/challenges/LSVRC/}.
+
+\bibitem[Simonyan et~al.(2014)Simonyan, Vedaldi, and
+  Zisserman]{visualizing__simonyan__2014}
+Karen Simonyan, Andrea Vedaldi, and Andrew Zisserman.
+\newblock Deep inside convolutional networks: Visualising image classification
+  models and saliency maps, 2014.
+\newblock URL \url{https://arxiv.org/abs/1312.6034}.
+
+\bibitem[Selvaraju et~al.(2017)Selvaraju, Cogswell, Das, Vedantam, Parikh, and
+  Batra]{Selvaraju17-gradcam}
+Ramprasaath~R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam,
+  Devi Parikh, and Dhruv Batra.
+\newblock Grad-cam: Visual expl anations from deep networks via gradient-based
+  localization.
+\newblock pages 618--626, 2017.
+\newblock \doi{10.1109/ICCV.2017.74}.
+
+\bibitem[Contributors()]{pytorch-web}
+PyTorch Contributors.
+\newblock {PyTorch documentation}.
+\newblock URL
+  \url{https://docs.pytorch.org/docs/stable/index.html?ajs_aid=88edefef-263d-44cf-8f7e-cb9b525c6afd}.
+
+\end{thebibliography}

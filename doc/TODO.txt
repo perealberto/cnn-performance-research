@@ -1,0 +1,44 @@
+TODO LIST TFG:
+
+PREÁMBULO
+- [x] abstract con palabras clave
+
+introducción:
+- [x] visión general redes neuronales y concretar un poco sobre las redes convolucionales
+- [x] motivación: red neuronal = caja negra -> queremos saber cómo funcionan
+- [x] estructura del trabajo
+
+RN TRADICIONALES
+- [ ] revisar introducción y separar partes con el abstract
+- añadir gráficas de las funciones de activación: perceptrón, sigmoide, relu
+- [x] revisar la sección de retropropagación y regla de la cadena
+- [x] añadir diagrama en dropout
+- [x] revisar limitaciones de las redes neuronales tradicionales
+
+RN CONVOLUCIONALES
+- [x] añadir diagramas a la introducción de las convolucionales
+- [x] remodelar sección de las capas
+- [x] añadir en ajuste de parámetros de las convolucionales los hiperparámetros (capas, tamaños de filtros, etc.)
+- [ ] expandir sección de optimización: explicar adam
+
+VISUALIZACIÓN
+- [ ] unificar secciones de visualización con la de convolución y añadir imágenes
+- [ ] añadir imágenes a mapas de características
+- [ ] expandir explicación y añadir imágenes a sección de activaciones
+- [ ] expandir explicación y añadir imágenes a sección de gradiente
+
+CONCLUSIONES
+- [x] escribir experimentación
+- [x] escribir conclusiones
+
+REVISIÓN DE MAQUETACIÓN:
+- del inglés machine learning
+- et al
+- sujeto de pruebas
+
+
+https://pavisj.medium.com/convolutions-and-backpropagations-46026a8f5d2c
+https://becominghuman.ai/back-propagation-in-convolutional-neural-networks-intuition-and-code-714ef1c38199
+https://www.jefkine.com/general/2016/09/05/backpropagation-in-convolutional-neural-networks/
+https://en.wikipedia.org/wiki/Convolutional_neural_network#Convolutional_layers
+

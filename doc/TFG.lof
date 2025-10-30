@@ -1,0 +1,31 @@
+\babel@toc {spanish}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Red neuronal totalmente conectada (3–4–2).}}{3}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Diagrama funcionamiento neurona simple.}}{4}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Preparación del conjunto de datos MNIST en los subconjuntos de entrenamiento, validación y pruebas.}}{9}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Esquema de \emph {K-fold Cross Validation} con \(K=5\): en cada iteración, un fold distinto (naranja) se usa para validación y los restantes (verde) para entrenamiento.}}{9}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Descenso del gradiente para el error cuadrático. Cada paso acerca $x$ al mínimo global ($x=0$).}}{11}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Descenso del gradiente en 3D del error cuadrático. Cada paso acerca $(x,y)$ al mínimo global $f(x,y) = 0$.}}{13}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Diagrama de la función $f(x,y,z)=(x+y)z$, para $(x,y,z)=(2,3,4)$.}}{15}{figure.caption.20}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Diagrama de regla de la cadena de la función $f(x,y,z)=(x+y)z$, para $(x,y,z)=(2,3,1)$.}}{15}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Ilustración del dropout: algunas neuronas (en gris con aspa) se desactivan de forma aleatoria durante el entrenamiento, forzando a la red a no depender de unidades específicas.}}{17}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Aplanado de una imagen para servir de entrada a una red neuronal.}}{18}{figure.caption.24}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Arquitectura LeNet-5 \cite {zhang2023dive}.}}{19}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Arquitectura AlexNet \cite {Krizhevsky2012ImageNetCW}.}}{20}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Convolución discreta entre $f = [0,0,1,1,0,0]$ y filtro de detección de bordes $g = [-1,0,1]$.}}{21}{figure.caption.28}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Convolución con filtro de Sobel en ejes ${x,y}$ para detectar bordes.}}{22}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Salida de una capa convolucional con $32$ filtros de $3\times 3$.}}{22}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Comparación entre una red lineal y una con activación ReLU. La introducción de no linealidad permite modelar funciones más complejas.}}{23}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Operación de Max Pooling con una ventana de $2\times 2$.}}{24}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Ejemplo de average pooling con stride $= 1$ y stride $= 2$.}}{25}{figure.caption.38}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Ejemplo de average pooling con $\textbf {padding}=1$.}}{26}{figure.caption.40}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Mapa de características obtenido al pasar el kernel K2 de una capa convolucional por una imagen de entrada.}}{28}{figure.caption.43}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Captura de ejemplos aleatorios del conjunto de entrenamiento de MNIST.}}{31}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Distribución de muestras de MNIST en los conjuntos de entrenamiento, validación y pruebas}}{32}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparación de áreas bajo la cura de dos modelos de predicción \cite {googledev-rocauc}.}}{34}{figure.caption.50}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
