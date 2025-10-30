@@ -2,7 +2,6 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Callable, Optional
 
-import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 import torch

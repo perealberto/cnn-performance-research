@@ -314,28 +314,121 @@ class SimpleCNN(nn.Module):
         self.fc2 = nn.Linear(120, 84)
         self.fc3 = nn.Linear(84, 10)
 
-        self._acts = None  # A_k (activations of the last conv layer)
-        self._grads = None  # dY/dA_k (gradients of the output)
-
-    def _save_grad(self, grad):
-        self._grads = grad
-
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
-
-        x = F.relu(self.conv2(x))
-        self._acts = x
-        self._acts.register_hook(self._save_grad)
-
-        x = self.pool(x)
+        x = self.pool(F.relu(self.conv2(x)))
         x = torch.flatten(x, 1)
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
         return x
 
-    def get_activations(self):
-        return self._acts
 
-    def get_activations_gradient(self):
-        return self._grads
+class LogisticRegressionMNIST(nn.Module):
+    """
+    LogisticRegressionMNIST is a linear classifier.
+    It has no hidden layers, mapping 28*28 pixels directly to 10 logits.
+    This model is intentionally underpowered for MNIST to serve as a weak baseline.
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.flatten = nn.Flatten()
+        self.fc = nn.Linear(28 * 28, 10)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = self.flatten(x)
+        logits = self.fc(x)
+        return logits
+
+
+class MLP512x512(nn.Module):
+    """
+    MLP512x512 is a stronger MLP baseline for MNIST.
+    Two hidden layers with BatchNorm and Dropout improve optimization and generalization.
+    """
+
+    def __init__(self, p_drop: float = 0.2):
+        super().__init__()
+        self.flatten = nn.Flatten()
+        self.fc1 = nn.Linear(28 * 28, 512)
+        self.bn1 = nn.BatchNorm1d(512)
+        self.fc2 = nn.Linear(512, 512)
+        self.bn2 = nn.BatchNorm1d(512)
+        self.fc3 = nn.Linear(512, 10)
+        self.drop = nn.Dropout(p_drop)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = self.flatten(x)  # (B, 784)
+        x = self.drop(F.relu(self.bn1(self.fc1(x))))
+        x = self.drop(F.relu(self.bn2(self.fc2(x))))
+        logits = self.fc3(x)  # (B, 10)
+        return logits
+
+
+class TinyCNNBad(nn.Module):
+    """
+    TinyCNNBad is a deliberately weak CNN:
+    - Very few channels and aggressive pooling lead to information loss.
+    - No BatchNorm; small capacity; likely underfits MNIST.
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 8, kernel_size=3, padding=0)
+        self.pool1 = nn.MaxPool2d(2)
+
+        self.conv2 = nn.Conv2d(8, 8, kernel_size=3, padding=0)
+        self.pool2 = nn.MaxPool2d(2)
+
+        self.fc = nn.Linear(8 * 5 * 5, 10)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = F.relu(self.conv1(x))
+        x = self.pool1(x)
+
+        x = F.relu(self.conv2(x))
+        x = self.pool2(x)
+
+        x = torch.flatten(x, 1)
+        logits = self.fc(x)
+        return logits
+
+
+class SmallCNNSolid(nn.Module):
+    """
+    SmallCNNSolid is a compact but strong CNN for MNIST:
+    - Two conv blocks with BatchNorm.
+    - A third 1x1 conv to enrich channel mixing.
+    - Global Average Pooling (GAP) before the classifier (stable and parameter-efficient).
+    """
+
+    def __init__(self, p_drop: float = 0.1):
+        super().__init__()
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.pool1 = nn.MaxPool2d(2)
+
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool2 = nn.MaxPool2d(2)
+
+        self.conv3 = nn.Conv2d(64, 64, kernel_size=1)
+        self.bn3 = nn.BatchNorm2d(64)
+
+        self.drop = nn.Dropout(p_drop)
+        self.fc = nn.Linear(64, 10)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = F.relu(self.bn1(self.conv1(x)))
+        x = self.pool1(x)
+
+        x = F.relu(self.bn2(self.conv2(x)))
+        x = self.pool2(x)
+
+        x = F.relu(self.bn3(self.conv3(x)))
+
+        gap = F.adaptive_avg_pool2d(x, output_size=1).flatten(1)
+        gap = self.drop(gap)
+        logits = self.fc(gap)
+        return logits

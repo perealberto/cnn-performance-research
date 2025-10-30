@@ -344,3 +344,5 @@ y_true_CNN, y_pred_CNN, *_ = metrics._collect_outputs(
     test_dataloader, simple_CNN, device
 )
 metrics.print_top_k_confusions("Simple CNN top 3 confusions", y_true_CNN, y_pred_CNN)
+
+# %%

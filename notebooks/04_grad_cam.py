@@ -6,9 +6,7 @@ from pathlib import Path
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "..")))
 
 import matplotlib.pyplot as plt
-import numpy as np
 import torch
-from torch import nn
 from torch.utils.data import DataLoader, random_split
 from torchvision import datasets
 from torchvision.transforms import ToTensor
@@ -41,59 +39,6 @@ val_dataloader = DataLoader(val_subset, batch_size=batch_size)
 test_dataloader = DataLoader(test_dataset, batch_size=batch_size)
 
 
-# -
-
-
-class GradCAM:
-    def __init__(self, model: nn.Module, device: torch.device | None = None):
-        self.model = model
-        self.target_layer = self._get_last_conv_layer(model)
-        self.gradients = None
-        self.activations = None
-        self.device = device if device else next(model.parameters()).device
-
-        self.target_layer.register_forward_hook(self._forward_hook)
-        self.target_layer.register_full_backward_hook(self._full_backward_hook)
-
-    def _get_last_conv_layer(self, model: nn.Module) -> nn.Module:
-        for layer in model.modules():
-            if isinstance(layer, nn.Conv2d):
-                return layer
-        raise ValueError("No convolutional layer found in the model.")
-
-    def _forward_hook(self, module, input, output):
-        self.activations = output.detach()
-
-    def _full_backward_hook(self, module, grad_input, grad_output):
-        self.gradients = grad_output[0].detach()
-
-    def compute_heatmap(self, x: torch.Tensor) -> tuple[np.ndarray, int, float]:
-        """Compute Grad-CAM heatmap for a single input image tensor."""
-        self.model.eval()
-        x = x.to(self.device).requires_grad(True)  # type: ignore
-
-        logits = self.model(x)
-        self.model.zero_grad()
-        class_idx = logits.argmax(dim=1).item()
-
-        one_hot = torch.zeros_like(logits)
-        one_hot[0, class_idx] = 1
-        logits.backward(gradient=one_hot, retain_graph=True)
-
-        assert self.gradients is not None, "Gradients have not been computed."
-        assert self.activations is not None, "Activations have not been recorded."
-
-        weights = torch.mean(self.gradients, dim=(2, 3), keepdim=True)
-        heatmap = torch.sum(weights * self.activations, dim=1, keepdim=True)
-        heatmap = torch.relu(heatmap)  # ReLU removes negative values
-        heatmap /= torch.max(heatmap)  # Normalize to [0, 1]
-
-        probs = torch.softmax(logits, dim=1)
-        predicted_prob = probs[0, class_idx].item()
-
-        return heatmap.squeeze().cpu().numpy(), class_idx, predicted_prob
-
-
 # +
 simple_cnn = models.SimpleCNN()
 checkpoint = torch.load(models_path / "simple_CNN.ckpt", map_location=device)
@@ -104,7 +49,7 @@ batch, _ = next(iter(test_dataloader))
 img = batch[6].unsqueeze(0).to(device)
 
 gc = grad.GradCAM(simple_cnn, device=device)
-heatmap, cls, _ = gc.compute_heatmap(img)
+cam = gc.generate(img)
 superimposed = grad.compute_superimposed_image(img, heatmap)
 
 img = img.squeeze(0).cpu().detach().numpy()[0]
@@ -123,3 +68,4 @@ cbar2 = fig.colorbar(im2, ax=axs[2], orientation="horizontal", fraction=0.05, pa
 cbar2.ax.tick_params(labelsize=8)
 
 plt.show()
+# -
