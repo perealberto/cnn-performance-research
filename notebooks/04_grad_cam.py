@@ -68,4 +68,3 @@ cbar2 = fig.colorbar(im2, ax=axs[2], orientation="horizontal", fraction=0.05, pa
 cbar2.ax.tick_params(labelsize=8)
 
 plt.show()
-# -
