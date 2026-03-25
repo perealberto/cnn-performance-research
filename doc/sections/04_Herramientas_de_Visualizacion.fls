@@ -1,0 +1,9 @@
+PWD D:/TFG/TFG__Redes_Convolucionales/sections
+INPUT c:/texlive/2025/texmf.cnf
+INPUT c:/texlive/2025/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT 04_Herramientas_de_Visualizacion.tex
+OUTPUT 04_Herramientas_de_Visualizacion.log
+INPUT c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmti10.tfm

@@ -1,7 +1,40 @@
 \chapter{Introducción}\label{cap:introduccion}
 
-En las últimas décadas, la inteligencia artificial (IA) se ha convertido en una tecnología ampliamente conocida y utilizada. Esto ha ocurrido en gran medida gracias al desarrollo de técnicas de aprendizaje automático (machine learning) y al auge de las redes neuronales artificiales. Inicialmente inspiradas en el cerebro humano, estas estructuras de computación han demostrado ser capaces de resolver problemas complejos en áreas como el reconocimiento de patrones, como el análisis forense de escritura manuscrita \cite{examples_nn__kulik_2009} o la interpretación de secuencias del ADN \cite{nn_dna_sequences__snyder_1993}; el procesamiento de lenguaje natural, utilizado en aplicaciones como la traducción automática entre idiomas \cite{machine_translation__mahata_2019} y la implementación de chatbots para atención al cliente automatizada \cite{chatbot_customer_service__nuruzzaman_2018}; y la visión por computadora, clave en tecnologías como el reconocimiento facial para desbloquear dispositivos móviles \cite{conv_nn_face_recog__chowanda_2019} o la conducción autónoma de vehículos mediante SLAM (Simultaneous Localization and Mapping) y detección de obstáculos en tiempo real \cite{slam_vehicles__saleem_2023}. Sin embargo, no todas las redes neuronales son iguales, su diseño y eficacia dependen de la arquitectura elegida y del tipo de datos que deben procesar, siendo este el principal motivo de existencia de tan diferentes diseños arquitectónicos.
+Para empezar, debemos contextualizar desde qué punto parte este proyecto y por qué es relevante hoy en día, así como las motivaciones e inquietudes por las que nace. Además, se describirá la estructura del proyecto de forma clara y se explicará cómo se abordará el estudio.
 
-En un mundo donde la demanda de sistemas de IA eficientes y explicables crece exponencialmente, comprender las diferencias entre los pilares de las redes neuronales se vuelve esencial tanto para investigadores como para profesionales del ámbito tecnológico.
+\section{Contexto}
 
-{\color{red} EXPANDIR INTRODUCCIÓN}
+En las últimas décadas, la inteligencia artificial (IA) se ha convertido en una tecnología ampliamente conocida y utilizada en áreas como la investigación y el desarrollo. Este auge está estrechamente ligado al avance de técnicas de aprendizaje automático (machine learning) que han dotado a las redes neuronales artificiales con la capacidad para aprender representaciones y relaciones complejas a partir de datos \cite{dl__goodfellow_2016, dl_python__chollet_2021}.
+
+Inicialmente inspiradas en el funcionamiento del cerebro humano, las redes neuronales buscan abstraer los principios del procesamiento de la información de nuestra mente, centrándose más en la capacidad computacional \cite{neurocomputing__hecht_nielsen_1998, rna_fundamentos__hilera_2021}. Este enfoque ha demostrado ser capaz de abordar con éxito problemas que resultarían difíciles por medio de algoritmos clásicos, como el reconocimiento de patrones, la clasificación, la predicción o la aproximación de funciones \cite{nn_fundamentals__thakur_2021}. No obstante, la eficacia de una red neuronal no depende exclusivamente de la disponibilidad de datos o de la capacidad de cómputo, sino de la arquitectura empleada y su capacidad de adaptación al problema planteado \cite{nn_dl__michael_nielsen_2015}.
+
+Particularmente, las redes neuronales convolucionales (CNN, Convolutional Neural Networks) han surgido como una arquitectura altamente eficaz frente a datos con estructura espacial, como las imágenes. Su diseño pretende aprender representaciones jerárquicamente: las primeras capas capturan características locales simples, mientras que las profundas combinan esas características para formar conceptos más abstractos \cite{dl_python__chollet_2021, nn_dl__michael_nielsen_2015}. Convirtiéndose las CNN en el estándar por antonomasia en el campo de la visión por computador.
+
+Sin embargo, a pesar de su elevado rendimiento, estos modelos suelen ser percibidos como cajas negras, ya que el conocimiento que adquieren durante el entrenamiento queda distribuido en millones de parámetros difíciles de interpretar de forma directa con el resultado. La falta de transparencia plantea diversas cuestiones acerca de qué tipo de información se almacena en sus capas internas y cómo se construyen las relaciones que permiten tomar decisiones al modelo \cite{dl__goodfellow_2016}.
+
+\section{Motivaciones}
+
+A pesar de que el desarrollo y la evaluación de modelos se ha centrado en métricas de rendimiento como la precisión o la función de coste, estos indicadores no ofrecen información suficiente acerca del comportamiento interno, por lo que acabamos tratando a estos modelos como cajas negras que reciben información y producen un resultado, como por arte de magia. Dos modelos con resultados similares pueden aprender representaciones internas muy distintas, lo que dificulta la comprensión de sus errores, sesgos y limitaciones \cite{dl_python__chollet_2021}.
+
+Por tanto, desde un punto de vista científico y práctico, resulta muy conveniente entender el aprendizaje interno de los modelos CNN. Comprender estas representaciones nos permitirá no solo mejorar la interpretación y la confianza en los modelos, sino también optimizar las arquitecturas ya existentes, diagnosticar fallos en el entrenamiento y producir sistemas más robustos \cite{nn_dl__michael_nielsen_2015, nn_fundamentals__thakur_2021}.
+
+Por tanto, este trabajo surge bajo la necesidad de analizar e interpretar el funcionamiento interno de las redes neuronales convolucionales prestando especial atención a las representaciones aprendidas en sus capas intermedias y finales, evaluando cómo estas contribuyen al proceso de toma de decisiones del modelo.
+
+\section{Estructura del proyecto}
+
+Con el objetivo de situar al lector dentro del marco de este estudio, en este apartado se presenta una breve guía de las diferentes secciones que componen el proyecto, así como el propósito de cada una de ellas.
+
+Para comenzar, se realiza un recorrido teórico por las bases de las redes neuronales artificiales y del aprendizaje profundo, estableciendo el marco conceptual necesario para comprender el resto del trabajo.
+
+\begin{enumerate}
+	\item \textbf{Introducción teórica a las redes neuronales artificiales}.
+	En este bloque se presenta una visión general de las redes neuronales tradicionales. Se describen su arquitectura básica, el modelo de neurona artificial, la organización en capas y los mecanismos de entrenamiento mediante retropropagación del error. Asimismo, se abordan conceptos clave como la generalización, la regularización y las principales limitaciones de estas arquitecturas cuando se aplican a datos de alta dimensionalidad, como las imágenes.
+
+	\item \textbf{Introducción teórica a las redes neuronales convolucionales}.
+	A partir de las limitaciones expuestas en el apartado anterior, se introducen las redes neuronales convolucionales como una evolución natural de las redes neuronales tradicionales para el procesamiento de datos con estructura espacial. En esta sección se describe en detalle su arquitectura, el funcionamiento interno de las capas convolucionales y el proceso de aprendizaje y optimización de los filtros.
+
+	\item \textbf{Herramientas de visualización}.
+	En este apartado se presentan distintas técnicas de visualización e interpretación del comportamiento interno de las redes neuronales convolucionales. Se abordan métodos basados en el análisis de mapas de características y activaciones intermedias, así como técnicas fundamentadas en el gradiente, que permiten estudiar qué regiones de la entrada influyen en las decisiones del modelo.
+\end{enumerate}
+
+Una vez establecido el marco teórico y las herramientas de análisis, el proyecto avanza hacia una fase experimental. En esta parte se describe el conjunto de datos empleado, las métricas de evaluación utilizadas y la implementación práctica tanto de una red neuronal tradicional como de una red neuronal convolucional aplicadas a la tarea de clasificación de dígitos manuscritos. Finalmente, se analizan y discuten los resultados obtenidos, extrayendo conclusiones sobre el aprendizaje interno de los modelos estudiados y proponiendo posibles líneas de trabajo futuro.

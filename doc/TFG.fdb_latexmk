@@ -1,21 +1,21 @@
 # Fdb version 4
-["bibtex TFG"] 1760541945.02743 "TFG.aux" "TFG.bbl" "TFG" 1760541986.7181 0
+["bibtex TFG"] 1772887310.92179 "TFG.aux" "TFG.bbl" "TFG" 1772887317.22596 0
   "./bibliografia.bib" 1759071439 7702 50e7e3d151840424ac332bcd4faf0789 ""
-  "TFG.aux" 1760541985 27863 8c135e5f4c2dad60b35981fd32249ac1 "pdflatex"
+  "TFG.aux" 1772887315 28785 f2f67b5fb1996d360ef368119e49e874 "pdflatex"
   "c:/texlive/2025/texmf-dist/bibtex/bst/natbib/unsrtnat.bst" 1758481840 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
   (generated)
   "TFG.bbl"
   "TFG.blg"
   (rewritten before read)
-["pdflatex"] 1760541980.86798 "TFG.tex" "TFG.pdf" "TFG" 1760541986.71883 0
+["pdflatex"] 1772887311.37398 "TFG.tex" "TFG.pdf" "TFG" 1772887317.2266 0
   "TFG.acr" 0 -1 0 ""
-  "TFG.aux" 1760541985 27863 8c135e5f4c2dad60b35981fd32249ac1 "pdflatex"
-  "TFG.bbl" 1760541945 6984 8c033ca1777e0ff7c5f01e9b18b2ca5b "bibtex TFG"
+  "TFG.aux" 1772887315 28785 f2f67b5fb1996d360ef368119e49e874 "pdflatex"
+  "TFG.bbl" 1772887311 5823 f88abdbec82354958a0ec021b78afaee "bibtex TFG"
   "TFG.gls" 0 -1 0 ""
-  "TFG.lof" 1760541985 4003 4096165315c3136ed4f226ed9becdd44 "pdflatex"
-  "TFG.out" 1760541985 5519 577174a283a3d29afc4013c6724f01e1 "pdflatex"
-  "TFG.tex" 1759078351 2083 7aeb1ef33fb8912cdc34271ec74e10ee ""
-  "TFG.toc" 1760541985 4125 31c2a4e7b2bc2d98d6ea93e63e80932c "pdflatex"
+  "TFG.lof" 1772887316 4176 73c3903cfe403102d2e191608e015cdb "pdflatex"
+  "TFG.out" 1772887316 5827 a1a9da6ff9fbec6c8cd8580359cb3d32 "pdflatex"
+  "TFG.tex" 1770461542 2084 d88e837fc656db4664b6f28d7f7688f1 ""
+  "TFG.toc" 1772887316 4537 7d22ad6fba27f92b4b604e40a0074e5c "pdflatex"
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1758480281 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc" 1758481046 2496 4d35740f3a177992ff7b134746c0a1db ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1758480631 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -314,10 +314,9 @@
   "sections/00_agradecimientos.tex" 1758795838 725 0c6089fed7df1b0dd99684918b1479b3 ""
   "sections/00_portada.tex" 1758478750 979 c93367ef697e9bd352ce11402c6480e4 ""
   "sections/00_resumen.tex" 1758749972 106 352589ccb0906587435e744f34f6a3bf ""
-  "sections/01_Introduccion.tex" 1758750011 1835 a11422d48759e0e78d9484643aab8337 ""
+  "sections/01_Introduccion.tex" 1769014299 6638 3a481f986899e88471204c6e23996867 ""
   "sections/02_Redes_Neuronales.tex" 1759085128 48131 3d98c3b7a09811a489686755e7216f86 ""
-  "sections/03_Redes_Neuronales_Convolucionales.tex" 1760285362 19181 09f540d12daf858bbe8d18fcf43b9825 ""
-  "sections/04_Herramientas_de_Visualizacion.tex" 1760541979 6397 908f1291c902318713b6a0d871eef571 ""
+  "sections/03_Redes_Neuronales_Convolucionales.tex" 1772887303 27763 0ec211b969c21c7d16bd8d81d973e578 ""
   "sections/05_Experimentacion.tex" 1758834218 14049 92f0c86629dfc6ce2af7b9ebb378bb15 ""
   "sections/06_Conclusiones_y_Futuras_Decisiones.tex" 1758572273 127 2a0066eb5b4dc34bc855fd7696dc3690 ""
   "sections/07_Anexos.tex" 1759078767 9713 93544a1673ac8db4843aa8d6c6b8d869 ""

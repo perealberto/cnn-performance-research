@@ -7,45 +7,45 @@ Warning--empty year in googledev-rocauc
 Warning--empty year in imagenet-web
 Warning--empty journal in Selvaraju17-gradcam
 Warning--empty year in pytorch-web
-You've used 25 entries,
+You've used 22 entries,
             2481 wiz_defined-function locations,
-            707 strings with 8907 characters,
-and the built_in function-call counts, 8718 in all, are:
-= -- 739
-> -- 379
-< -- 18
-+ -- 158
-- -- 108
-* -- 621
-:= -- 1354
-add.period$ -- 82
-call.type$ -- 25
-change.case$ -- 43
-chr.to.int$ -- 25
-cite$ -- 31
-duplicate$ -- 468
-empty$ -- 859
-format.name$ -- 145
-if$ -- 1886
+            683 strings with 8122 characters,
+and the built_in function-call counts, 7397 in all, are:
+= -- 611
+> -- 328
+< -- 15
++ -- 138
+- -- 94
+* -- 519
+:= -- 1157
+add.period$ -- 69
+call.type$ -- 22
+change.case$ -- 37
+chr.to.int$ -- 22
+cite$ -- 28
+duplicate$ -- 401
+empty$ -- 735
+format.name$ -- 124
+if$ -- 1591
 int.to.chr$ -- 1
-int.to.str$ -- 26
-missing$ -- 27
-newline$ -- 139
-num.names$ -- 69
-pop$ -- 238
+int.to.str$ -- 23
+missing$ -- 24
+newline$ -- 121
+num.names$ -- 60
+pop$ -- 215
 preamble$ -- 1
-purify$ -- 25
+purify$ -- 22
 quote$ -- 0
-skip$ -- 295
+skip$ -- 254
 stack$ -- 0
-substring$ -- 328
-swap$ -- 70
-text.length$ -- 4
+substring$ -- 252
+swap$ -- 55
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 154
+type$ -- 133
 warning$ -- 4
-while$ -- 66
+while$ -- 54
 width$ -- 0
-write$ -- 330
+write$ -- 284
 (There were 4 warnings)

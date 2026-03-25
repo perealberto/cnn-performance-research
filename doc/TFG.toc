@@ -1,51 +1,56 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Redes Neuronales Artificiales}{2}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Arquitectura de una Red Neuronal}{3}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Las capas}{4}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}La neurona}{4}{subsection.2.1.2}%
-\contentsline {subsubsection}{Función de Combinación}{5}{subsubsection*.7}%
-\contentsline {subsubsection}{Función de Activación}{5}{subsubsection*.8}%
-\contentsline {paragraph}{Perceptrón}{6}{section*.9}%
-\contentsline {paragraph}{Sigmoide}{7}{section*.10}%
-\contentsline {paragraph}{ReLU}{7}{section*.11}%
-\contentsline {section}{\numberline {2.2}Entrenamiento}{8}{section.2.2}%
-\contentsline {paragraph}{Preparación de los Datos}{8}{section*.12}%
-\contentsline {subsection}{\numberline {2.2.1}Retropropagación}{10}{subsection.2.2.1}%
-\contentsline {paragraph}{Descenso del Gradiente}{10}{section*.15}%
-\contentsline {paragraph}{Actualización de los Parámetros}{13}{section*.18}%
-\contentsline {paragraph}{La Regla de la Cadena}{14}{section*.19}%
-\contentsline {subsection}{\numberline {2.2.2}Generalización y Regularización}{16}{subsection.2.2.2}%
-\contentsline {paragraph}{Problemas comunes en el entrenamiento}{16}{section*.22}%
-\contentsline {section}{\numberline {2.3}Limitaciones de las Redes Neuronales Tradicionales}{18}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Redes Neuronales Convolucionales}{19}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Arquitectura de una Red Neuronal Convolucional}{21}{section.3.1}%
-\contentsline {paragraph}{Capa convolucional}{21}{section*.27}%
-\contentsline {paragraph}{Capa de activación}{23}{section*.31}%
-\contentsline {paragraph}{Capa de pooling}{23}{section*.33}%
-\contentsline {paragraph}{Capa completamente conexa}{24}{section*.35}%
-\contentsline {section}{\numberline {3.2}Funcionamiento Interno: Filtrado, Stride y Padding}{24}{section.3.2}%
-\contentsline {paragraph}{Dimensiones del filtro}{25}{section*.36}%
-\contentsline {paragraph}{Stride}{25}{section*.37}%
-\contentsline {paragraph}{Padding}{25}{section*.39}%
-\contentsline {section}{\numberline {3.3}Aprendizaje y Optimización de Filtros}{26}{section.3.3}%
-\contentsline {paragraph}{Retropropagación en las capas convolucionales}{26}{section*.41}%
-\contentsline {paragraph}{Optimización}{27}{section*.42}%
-\contentsline {subsection}{\numberline {3.3.1}Visualización de activaciones}{27}{subsection.3.3.1}%
-\contentsline {chapter}{\numberline {4}Herramientas de Visualización}{28}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Mapas de Características y Activaciones}{28}{section.4.1}%
-\contentsline {paragraph}{Activaciones Neuronales}{29}{section*.44}%
-\contentsline {section}{\numberline {4.2}Métodos Basados en el Gradiente}{29}{section.4.2}%
-\contentsline {paragraph}{Mapas de Saliencia (Saliency Maps)}{29}{section*.45}%
-\contentsline {paragraph}{Grad-CAM (Gradient-weighted Class Activation Mapping)}{30}{section*.47}%
-\contentsline {chapter}{\numberline {5}Experimentación}{31}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Conjunto de datos: MNIST}{31}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Métricas de Evaluación}{32}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Implementando una Red Neuronal para Clasificar Números}{35}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Implementando una Red Convolucional para Clasificar Números}{36}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Discusión}{36}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Conclusiones y Futuras Decisiones}{37}{chapter.6}%
-\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Desarrollo Matemático de la Retropropagación}{38}{appendix.1.Alph1}%
-\contentsline {subsubsection}{Ecuaciones detrás de la retropropagación}{39}{subsubsection*.51}%
-\contentsline {subsubsection}{El algoritmo de retropropagación}{41}{subsubsection*.52}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{43}{appendix*.53}%
+\contentsline {section}{\numberline {1.1}Contexto}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Motivaciones}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Estructura del proyecto}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Redes Neuronales Artificiales}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Arquitectura de una Red Neuronal}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Las capas}{6}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}La neurona}{6}{subsection.2.1.2}%
+\contentsline {subsubsection}{Función de Combinación}{7}{subsubsection*.7}%
+\contentsline {subsubsection}{Función de Activación}{7}{subsubsection*.8}%
+\contentsline {paragraph}{Perceptrón}{8}{section*.9}%
+\contentsline {paragraph}{Sigmoide}{9}{section*.10}%
+\contentsline {paragraph}{ReLU}{9}{section*.11}%
+\contentsline {section}{\numberline {2.2}Entrenamiento}{10}{section.2.2}%
+\contentsline {paragraph}{Preparación de los Datos}{10}{section*.12}%
+\contentsline {subsection}{\numberline {2.2.1}Retropropagación}{12}{subsection.2.2.1}%
+\contentsline {paragraph}{Descenso del Gradiente}{12}{section*.15}%
+\contentsline {paragraph}{Actualización de los Parámetros}{15}{section*.18}%
+\contentsline {paragraph}{La Regla de la Cadena}{16}{section*.19}%
+\contentsline {subsection}{\numberline {2.2.2}Generalización y Regularización}{18}{subsection.2.2.2}%
+\contentsline {paragraph}{Problemas comunes en el entrenamiento}{18}{section*.22}%
+\contentsline {section}{\numberline {2.3}Limitaciones de las Redes Neuronales Tradicionales}{20}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Redes Neuronales Convolucionales}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Arquitectura básica}{23}{section.3.1}%
+\contentsline {paragraph}{Capa convolucional}{23}{section*.27}%
+\contentsline {paragraph}{Capa de activación}{25}{section*.31}%
+\contentsline {paragraph}{Capa de pooling}{25}{section*.33}%
+\contentsline {paragraph}{Capa completamente conexa}{26}{section*.35}%
+\contentsline {section}{\numberline {3.2}Funcionamiento interno de las redes convolucionales}{26}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Filtrado, stride y padding}{26}{subsection.3.2.1}%
+\contentsline {paragraph}{Dimensiones del filtro}{27}{section*.36}%
+\contentsline {paragraph}{Stride}{27}{section*.37}%
+\contentsline {paragraph}{Padding}{27}{section*.39}%
+\contentsline {section}{\numberline {3.3}Aprendizaje y optimización de filtros}{28}{section.3.3}%
+\contentsline {paragraph}{Retropropagación en las capas convolucionales}{28}{section*.41}%
+\contentsline {paragraph}{Optimización}{29}{section*.42}%
+\contentsline {section}{\numberline {3.4}Representaciones internas y activaciones}{29}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Visualización de representaciones internas}{29}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Herramientas de visualización}{30}{subsection.3.4.2}%
+\contentsline {paragraph}{Mapas de características}{30}{section*.43}%
+\contentsline {paragraph}{Visualización de activaciones por capa}{31}{section*.45}%
+\contentsline {paragraph}{Métodos basados en gradientes}{31}{section*.46}%
+\contentsline {subparagraph}{Mapas de saliencia (Saliency Maps).}{31}{subparagraph*.47}%
+\contentsline {subparagraph}{Grad-CAM (Gradient-weighted Class Activation Mapping).}{32}{subparagraph*.49}%
+\contentsline {chapter}{\numberline {4}Experimentación}{33}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conjunto de datos: MNIST}{33}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Métricas de Evaluación}{34}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Implementando una Red Neuronal para Clasificar Números}{37}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Implementando una Red Convolucional para Clasificar Números}{38}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Discusión}{38}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Conclusiones y Futuras Decisiones}{39}{chapter.5}%
+\contentsline {chapter}{Ap\'{e}ndice \numberline {A}Desarrollo Matemático de la Retropropagación}{40}{appendix.1.Alph1}%
+\contentsline {subsubsection}{Ecuaciones detrás de la retropropagación}{41}{subsubsection*.53}%
+\contentsline {subsubsection}{El algoritmo de retropropagación}{43}{subsubsection*.54}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{45}{appendix*.55}%

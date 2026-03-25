@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.21)  15 OCT 2025 17:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.21)  7 MAR 2026 13:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1177,7 +1177,7 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 (./sections/00_portada.tex
-<figures/etsii_us.png, id=111, 1463.4675pt x 282.3348pt>
+<figures/etsii_us.png, id=123, 1463.4675pt x 282.3348pt>
 File: figures/etsii_us.png Graphic file (type png)
 <use figures/etsii_us.png>
 Package pdftex.def Info: figures/etsii_us.png  used on input line 6.
@@ -1224,13 +1224,12 @@ LaTeX Font Info:    Trying to load font information for OT1+zplm on input line
 (c:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
-Package tocbasic Info: Using my definition of `\numberline' on input line 3.
-Package tocbasic Info: Using my definition of `\numberline' on input line 21.
-Package tocbasic Info: Using my definition of `\numberline' on input line 35.
-Package tocbasic Info: Using my definition of `\numberline' on input line 41.
-Package tocbasic Info: Using my definition of `\numberline' on input line 47.
-Package tocbasic Info: Using my definition of `\numberline' on input line 48.
-Package tocbasic Info: Using my definition of `\numberline' on input line 51.
+Package tocbasic Info: Using my definition of `\numberline' on input line 6.
+Package tocbasic Info: Using my definition of `\numberline' on input line 24.
+Package tocbasic Info: Using my definition of `\numberline' on input line 46.
+Package tocbasic Info: Using my definition of `\numberline' on input line 52.
+Package tocbasic Info: Using my definition of `\numberline' on input line 53.
+Package tocbasic Info: Using my definition of `\numberline' on input line 56.
 )
 \tf@toc=\write8
 \openout8 = `TFG.toc'.
@@ -1252,42 +1251,45 @@ LaTeX Info: Redefining \% on input line 1.
 
 ] (./sections/01_Introduccion.tex
 Cap\'{\i }tulo 1.
-) (./sections/02_Redes_Neuronales.tex
+
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1 \chapter
-            {Redes Neuronales Artificiales}\label{cap:red_neuronal_tradicional}
-[1
+l.18 
+      [1
 
 
 ]
-Cap\'{\i }tulo 2.
-
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.8 
-     [2
-
-]
+l.38 \end{enumerate}
+                     [2]) (./sections/02_Redes_Neuronales.tex
 
 [3]
+Cap\'{\i }tulo 2.
 
-[4]
+
+[4
+
+]
 
 [5]
 
 [6]
 
 [7]
-<figures/ejemplos/preparacion_datos_mnist.png, id=353, 463.9734pt x 239.9364pt>
+
+[8]
+
+[9]
+<figures/ejemplos/preparacion_datos_mnist.png, id=383, 463.9734pt x 239.9364pt>
 
 File: figures/ejemplos/preparacion_datos_mnist.png Graphic file (type png)
 <use figures/ejemplos/preparacion_datos_mnist.png>
@@ -1299,10 +1301,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[8]
+[10]
 
-[9 <./figures/ejemplos/preparacion_datos_mnist.png>] (c:/texlive/2025/texmf-dis
-t/tex/latex/listings/lstlang1.sty
+[11 <./figures/ejemplos/preparacion_datos_mnist.png>] (c:/texlive/2025/texmf-di
+st/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 LaTeX Font Info:    Trying to load font information for OT1+zi4 on input line 2
@@ -1316,8 +1318,8 @@ LaTeX Font Info:    Font shape `OT1/zi4/b/n' will be
 (Font)              scaled to size 12.0pt on input line 273.
 
 
-[10{c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}]
-<figures/ejemplos/gradient_descent_2d.png, id=381, 462.528pt x 346.896pt>
+[12{c:/texlive/2025/texmf-dist/fonts/enc/dvips/inconsolata/i4-ot1-0.enc}]
+<figures/ejemplos/gradient_descent_2d.png, id=410, 462.528pt x 346.896pt>
 File: figures/ejemplos/gradient_descent_2d.png Graphic file (type png)
 <use figures/ejemplos/gradient_descent_2d.png>
 Package pdftex.def Info: figures/ejemplos/gradient_descent_2d.png  used on inpu
@@ -1325,8 +1327,8 @@ t line 305.
 (pdftex.def)             Requested size: 264.61333pt x 198.46852pt.
 
 
-[11 <./figures/ejemplos/gradient_descent_2d.png>]
-<figures/ejemplos/gradient_descent_3d.png, id=403, 462.528pt x 346.896pt>
+[13 <./figures/ejemplos/gradient_descent_2d.png>]
+<figures/ejemplos/gradient_descent_3d.png, id=434, 462.528pt x 346.896pt>
 File: figures/ejemplos/gradient_descent_3d.png Graphic file (type png)
 <use figures/ejemplos/gradient_descent_3d.png>
 Package pdftex.def Info: figures/ejemplos/gradient_descent_3d.png  used on inpu
@@ -1334,10 +1336,10 @@ t line 343.
 (pdftex.def)             Requested size: 308.71106pt x 231.54573pt.
 
 
-[12]
+[14]
 
-[13 <./figures/ejemplos/gradient_descent_3d.png>]
-<figures/ejemplos/forward_diagram.png, id=448, 250.7769pt x 158.2713pt>
+[15 <./figures/ejemplos/gradient_descent_3d.png>]
+<figures/ejemplos/forward_diagram.png, id=477, 250.7769pt x 158.2713pt>
 File: figures/ejemplos/forward_diagram.png Graphic file (type png)
 <use figures/ejemplos/forward_diagram.png>
 Package pdftex.def Info: figures/ejemplos/forward_diagram.png  used on input li
@@ -1345,8 +1347,8 @@ ne 375.
 (pdftex.def)             Requested size: 264.61333pt x 167.02052pt.
 
 
-[14]
-<figures/ejemplos/backward_diagram.png, id=456, 250.0542pt x 174.1707pt>
+[16]
+<figures/ejemplos/backward_diagram.png, id=485, 250.0542pt x 174.1707pt>
 File: figures/ejemplos/backward_diagram.png Graphic file (type png)
 <use figures/ejemplos/backward_diagram.png>
 Package pdftex.def Info: figures/ejemplos/backward_diagram.png  used on input l
@@ -1354,13 +1356,13 @@ ine 391.
 (pdftex.def)             Requested size: 264.61333pt x 184.32771pt.
 
 
-[15 <./figures/ejemplos/forward_diagram.png> <./figures/ejemplos/backward_diagr
+[17 <./figures/ejemplos/forward_diagram.png> <./figures/ejemplos/backward_diagr
 am.png>]
 
-[16]
+[18]
 
-[17]
-<figures/ejemplos/imagen_a_red_neuronal.png, id=478, 271.0125pt x 156.1032pt>
+[19]
+<figures/ejemplos/imagen_a_red_neuronal.png, id=508, 271.0125pt x 156.1032pt>
 File: figures/ejemplos/imagen_a_red_neuronal.png Graphic file (type png)
 <use figures/ejemplos/imagen_a_red_neuronal.png>
 Package pdftex.def Info: figures/ejemplos/imagen_a_red_neuronal.png  used on in
@@ -1368,9 +1370,9 @@ put line 502.
 (pdftex.def)             Requested size: 308.71106pt x 177.8237pt.
 ) (./sections/03_Redes_Neuronales_Convolucionales.tex
 
-[18 <./figures/ejemplos/imagen_a_red_neuronal.png>]
+[20 <./figures/ejemplos/imagen_a_red_neuronal.png>]
 Cap\'{\i }tulo 3.
-<figures/ejemplos/LeNet-5_architecture.png, id=485, 1332.98pt x 502.87875pt>
+<figures/ejemplos/LeNet-5_architecture.png, id=515, 1332.98pt x 502.87875pt>
 File: figures/ejemplos/LeNet-5_architecture.png Graphic file (type png)
 <use figures/ejemplos/LeNet-5_architecture.png>
 Package pdftex.def Info: figures/ejemplos/LeNet-5_architecture.png  used on inp
@@ -1378,10 +1380,10 @@ ut line 9.
 (pdftex.def)             Requested size: 441.01773pt x 166.37253pt.
 
 
-[19
+[21
 
  <./figures/ejemplos/LeNet-5_architecture.png>]
-<figures/ejemplos/AlexNet_Original_block_diagram.png, id=500, 752.8125pt x 235.
+<figures/ejemplos/AlexNet_Original_block_diagram.png, id=529, 752.8125pt x 235.
 88126pt>
 File: figures/ejemplos/AlexNet_Original_block_diagram.png Graphic file (type pn
 g)
@@ -1391,97 +1393,93 @@ sed on input line 22.
 (pdftex.def)             Requested size: 441.01773pt x 138.18973pt.
 
 
-[20 <./figures/ejemplos/AlexNet_Original_block_diagram.png>]
-<figures/ejemplos/convolucion_f_g_discretas.png, id=516, 578.16pt x 433.62pt>
+[22 <./figures/ejemplos/AlexNet_Original_block_diagram.png>]
+<figures/ejemplos/convolucion_f_g_discretas.png, id=546, 578.16pt x 433.62pt>
 File: figures/ejemplos/convolucion_f_g_discretas.png Graphic file (type png)
 <use figures/ejemplos/convolucion_f_g_discretas.png>
 Package pdftex.def Info: figures/ejemplos/convolucion_f_g_discretas.png  used o
-n input line 47.
+n input line 45.
 (pdftex.def)             Requested size: 308.71106pt x 231.53117pt.
-<figures/ejemplos/convolucion_sobel.png, id=518, 492.1587pt x 224.037pt>
+<figures/ejemplos/convolucion_sobel.png, id=548, 492.1587pt x 224.037pt>
 File: figures/ejemplos/convolucion_sobel.png Graphic file (type png)
 <use figures/ejemplos/convolucion_sobel.png>
 Package pdftex.def Info: figures/ejemplos/convolucion_sobel.png  used on input 
-line 56.
+line 54.
 (pdftex.def)             Requested size: 441.01773pt x 200.75627pt.
 
 
-[21 <./figures/ejemplos/convolucion_f_g_discretas.png>]
-<figures/ejemplos/conv1_salidas.png, id=527, 310.0383pt x 151.767pt>
+[23 <./figures/ejemplos/convolucion_f_g_discretas.png>]
+<figures/ejemplos/conv1_salidas.png, id=558, 310.0383pt x 151.767pt>
 File: figures/ejemplos/conv1_salidas.png Graphic file (type png)
 <use figures/ejemplos/conv1_salidas.png>
 Package pdftex.def Info: figures/ejemplos/conv1_salidas.png  used on input line
- 65.
+ 63.
 (pdftex.def)             Requested size: 441.01773pt x 215.88579pt.
 
 
-[22 <./figures/ejemplos/convolucion_sobel.png> <./figures/ejemplos/conv1_salida
+[24 <./figures/ejemplos/convolucion_sobel.png> <./figures/ejemplos/conv1_salida
 s.png>]
-<figures/ejemplos/no_linealidad_relu.png, id=537, 237.7683pt x 79.497pt>
+<figures/ejemplos/no_linealidad_relu.png, id=568, 237.7683pt x 79.497pt>
 File: figures/ejemplos/no_linealidad_relu.png Graphic file (type png)
 <use figures/ejemplos/no_linealidad_relu.png>
 Package pdftex.def Info: figures/ejemplos/no_linealidad_relu.png  used on input
- line 77.
+ line 75.
 (pdftex.def)             Requested size: 264.61333pt x 88.47803pt.
-<figures/ejemplos/pooling_2d.png, id=538, 339.669pt x 209.583pt>
+<figures/ejemplos/pooling_2d.png, id=569, 339.669pt x 209.583pt>
 File: figures/ejemplos/pooling_2d.png Graphic file (type png)
 <use figures/ejemplos/pooling_2d.png>
-Package pdftex.def Info: figures/ejemplos/pooling_2d.png  used on input line 89
+Package pdftex.def Info: figures/ejemplos/pooling_2d.png  used on input line 87
 .
 (pdftex.def)             Requested size: 352.81552pt x 217.70212pt.
 
 
-[23 <./figures/ejemplos/no_linealidad_relu.png>]
+[25 <./figures/ejemplos/no_linealidad_relu.png>]
 
-[24 <./figures/ejemplos/pooling_2d.png>]
-<figures/ejemplos/stride_avg_pooling.png, id=559, 268.1217pt x 117.0774pt>
+[26 <./figures/ejemplos/pooling_2d.png>]
+<figures/ejemplos/stride_avg_pooling.png, id=589, 268.1217pt x 117.0774pt>
 File: figures/ejemplos/stride_avg_pooling.png Graphic file (type png)
 <use figures/ejemplos/stride_avg_pooling.png>
 Package pdftex.def Info: figures/ejemplos/stride_avg_pooling.png  used on input
- line 122.
+ line 119.
 (pdftex.def)             Requested size: 286.65883pt x 125.18402pt.
 
 
-[25 <./figures/ejemplos/stride_avg_pooling.png>]
-<figures/ejemplos/padding_avg_pooling.png, id=569, 362.7954pt x 210.3057pt>
+[27 <./figures/ejemplos/stride_avg_pooling.png>]
+<figures/ejemplos/padding_avg_pooling.png, id=599, 362.7954pt x 210.3057pt>
 File: figures/ejemplos/padding_avg_pooling.png Graphic file (type png)
 <use figures/ejemplos/padding_avg_pooling.png>
 Package pdftex.def Info: figures/ejemplos/padding_avg_pooling.png  used on inpu
-t line 133.
+t line 130.
 (pdftex.def)             Requested size: 352.81552pt x 204.52576pt.
 
 
-[26 <./figures/ejemplos/padding_avg_pooling.png>]) (./sections/04_Herramientas_
-de_Visualizacion.tex
+[28 <./figures/ejemplos/padding_avg_pooling.png>]
 
-[27]
-Cap\'{\i }tulo 4.
-<figures/ejemplos/mapa_caracterisicas_con_kernel.png, id=590, 867.24pt x 433.62
+[29]
+<figures/ejemplos/mapa_caracterisicas_con_kernel.png, id=620, 867.24pt x 433.62
 pt>
 File: figures/ejemplos/mapa_caracterisicas_con_kernel.png Graphic file (type pn
 g)
 <use figures/ejemplos/mapa_caracterisicas_con_kernel.png>
 Package pdftex.def Info: figures/ejemplos/mapa_caracterisicas_con_kernel.png  u
-sed on input line 15.
+sed on input line 210.
 (pdftex.def)             Requested size: 308.71106pt x 154.35632pt.
 
 
-[28
-
- <./figures/ejemplos/mapa_caracterisicas_con_kernel.png>]
-
-[29]
-<figures/ejemplos/saliency_map.png, id=608, 1084.05pt x 361.35pt>
+[30 <./figures/ejemplos/mapa_caracterisicas_con_kernel.png>]
+<figures/ejemplos/saliency_map.png, id=630, 1084.05pt x 361.35pt>
 File: figures/ejemplos/saliency_map.png Graphic file (type png)
 <use figures/ejemplos/saliency_map.png>
 Package pdftex.def Info: figures/ejemplos/saliency_map.png  used on input line 
-45.
+268.
 (pdftex.def)             Requested size: 441.01773pt x 147.0076pt.
-) (./sections/05_Experimentacion.tex
 
-[30 <./figures/ejemplos/saliency_map.png>]
-Cap\'{\i }tulo 5.
-<figures/ejemplos/MNIST_examples.png, id=625, 578.16pt x 289.08pt>
+
+[31]) (./sections/05_Experimentacion.tex
+
+[32 <./figures/ejemplos/saliency_map.png>]
+Cap\'{\i }tulo 4.
+<figures/ejemplos/MNIST_examples.png, id=659, 578.16pt x 289.08pt>
 File: figures/ejemplos/MNIST_examples.png Graphic file (type png)
 <use figures/ejemplos/MNIST_examples.png>
 Package pdftex.def Info: figures/ejemplos/MNIST_examples.png  used on input lin
@@ -1489,10 +1487,10 @@ e 13.
 (pdftex.def)             Requested size: 264.61333pt x 132.30353pt.
 
 
-[31
+[33
 
  <./figures/ejemplos/MNIST_examples.png>]
-<figures/ejemplos/mnist_distribution_datasets.png, id=648, 1084.05pt x 289.08pt
+<figures/ejemplos/mnist_distribution_datasets.png, id=682, 1084.05pt x 289.08pt
 >
 File: figures/ejemplos/mnist_distribution_datasets.png Graphic file (type png)
 <use figures/ejemplos/mnist_distribution_datasets.png>
@@ -1501,16 +1499,16 @@ Package pdftex.def Info: figures/ejemplos/mnist_distribution_datasets.png  used
 (pdftex.def)             Requested size: 441.01773pt x 117.60606pt.
 
 
-[32 <./figures/ejemplos/mnist_distribution_datasets.png>]
+[34 <./figures/ejemplos/mnist_distribution_datasets.png>]
 
-[33]
-<figures/ejemplos/auc_0-65_google_ejemplo.png, id=680, 1027.84pt x 770.88pt>
+[35]
+<figures/ejemplos/auc_0-65_google_ejemplo.png, id=713, 1027.84pt x 770.88pt>
 File: figures/ejemplos/auc_0-65_google_ejemplo.png Graphic file (type png)
 <use figures/ejemplos/auc_0-65_google_ejemplo.png>
 Package pdftex.def Info: figures/ejemplos/auc_0-65_google_ejemplo.png  used on 
 input line 123.
 (pdftex.def)             Requested size: 216.1011pt x 162.06601pt.
-<figures/ejemplos/auc_0-93_google_ejemplo.png, id=681, 1027.84pt x 770.88pt>
+<figures/ejemplos/auc_0-93_google_ejemplo.png, id=714, 1027.84pt x 770.88pt>
 File: figures/ejemplos/auc_0-93_google_ejemplo.png Graphic file (type png)
 <use figures/ejemplos/auc_0-93_google_ejemplo.png>
 Package pdftex.def Info: figures/ejemplos/auc_0-93_google_ejemplo.png  used on 
@@ -1518,46 +1516,46 @@ input line 127.
 (pdftex.def)             Requested size: 216.1011pt x 162.06601pt.
 
 
-[34 <./figures/ejemplos/auc_0-65_google_ejemplo.png (PNG copy)> <./figures/ejem
+[36 <./figures/ejemplos/auc_0-65_google_ejemplo.png (PNG copy)> <./figures/ejem
 plos/auc_0-93_google_ejemplo.png (PNG copy)>]
 
-[35]) (./sections/06_Conclusiones_y_Futuras_Decisiones.tex
+[37]) (./sections/06_Conclusiones_y_Futuras_Decisiones.tex
 
-[36]
-Cap\'{\i }tulo 6.
+[38]
+Cap\'{\i }tulo 5.
 ) (./sections/07_Anexos.tex
 
-[37
+[39
 
 ]
 Ap\'{e}ndice A.
 
 
-[38
+[40
 
 ]
 
-[39]
+[41]
 
-[40]
+[42]
 
-[41])
+[43])
 No file TFG.gls.
 No file TFG.acr.
 (./TFG.bbl
 
-[42]
+[44]
 
-[43
+[45
 
 ]
 LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 166.
+(Font)              scaled to size 9.0pt on input line 140.
 LaTeX Font Info:    Font shape `OT1/zi4/m/n' will be
-(Font)              scaled to size 7.0pt on input line 166.
+(Font)              scaled to size 7.0pt on input line 140.
 )
 
-[44] (./TFG.aux
+[46] (./TFG.aux
 LaTeX Info: Redefining \. on input line 18.
 LaTeX Info: Redefining \% on input line 18.
 )
@@ -1566,13 +1564,13 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `TFG.out' has not changed.
-(rerunfilecheck)             Checksum: 577174A283A3D29AFC4013C6724F01E1;5519.
+(rerunfilecheck)             Checksum: A1A9DA6FF9FBEC6C8CD8580359CB3D32;5827.
  ) 
 Here is how much of TeX's memory you used:
- 47268 strings out of 467797
- 1064240 string characters out of 5435982
- 1960887 words of memory out of 5000000
- 74874 multiletter control sequences out of 15000+600000
+ 47263 strings out of 467797
+ 1063598 string characters out of 5435982
+ 1961001 words of memory out of 5000000
+ 74865 multiletter control sequences out of 15000+600000
  672208 words of font info for 153 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  104i,9n,120p,2536b,1349s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1586,10 +1584,10 @@ ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts
 /mathpazo/fplmri.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8
 a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texli
 ve/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on TFG.pdf (50 pages, 1602610 bytes).
+Output written on TFG.pdf (52 pages, 1607986 bytes).
 PDF statistics:
- 903 PDF objects out of 1000 (max. 8388607)
- 776 compressed objects within 8 object streams
- 266 named destinations out of 1000 (max. 500000)
- 331 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 937 PDF objects out of 1000 (max. 8388607)
+ 807 compressed objects within 9 object streams
+ 273 named destinations out of 1000 (max. 500000)
+ 355 words of extra memory for PDF output out of 10000 (max. 10000000)
 

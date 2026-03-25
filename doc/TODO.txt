@@ -1,7 +1,7 @@
 TODO LIST TFG:
 
 PREÁMBULO
-- [x] abstract con palabras clave
+- [ ] abstract con palabras clave
 
 introducción:
 - [x] visión general redes neuronales y concretar un poco sobre las redes convolucionales
@@ -22,14 +22,18 @@ RN CONVOLUCIONALES
 - [ ] expandir sección de optimización: explicar adam
 
 VISUALIZACIÓN
-- [ ] unificar secciones de visualización con la de convolución y añadir imágenes
+- [x] unificar secciones de visualización con la de convolución y añadir imágenes
 - [ ] añadir imágenes a mapas de características
 - [ ] expandir explicación y añadir imágenes a sección de activaciones
+	- cambiar título
+	- hacer introducción y dividir mapas de características y activaciones en dos apartados (paragraph), en cada uno profundizar más
 - [ ] expandir explicación y añadir imágenes a sección de gradiente
+	- estado del arte
+	- profundizar en el método de grad cam pytorch, qué hace por detrás, mejorar explicación de la memoria
 
 CONCLUSIONES
-- [x] escribir experimentación
-- [x] escribir conclusiones
+- [ ] escribir experimentación
+- [ ] escribir conclusiones
 
 REVISIÓN DE MAQUETACIÓN:
 - del inglés machine learning

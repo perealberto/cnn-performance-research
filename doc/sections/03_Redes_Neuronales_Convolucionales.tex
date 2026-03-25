@@ -29,9 +29,7 @@ Más tarde, por el año 2012, el interés en las redes convolucionales increment
 
 Actualmente, las redes convolucionales tienen una amplia variedad de aplicaciones prácticas: reconocimiento facial en sistemas de seguridad, detección de objetos en conducción autónoma, análisis médico de imágenes como radiografías o resonancias magnéticas, clasificación de imágenes por satélite o incluso el procesamiento de vídeo en tiempo real \cite{nn_fundamentals__thakur_2021, rna_fundamentos__hilera_2021, conv_nn_face_recog__chowanda_2019}.
 
-
-
-\section{Arquitectura de una Red Neuronal Convolucional}\label{sec:arquitectura_cnn}
+\section{Arquitectura básica}\label{sec:arquitectura_cnn}
 
 Las redes convolucionales son famosas por su arquitectura que, a menudo, recuerda a la forma de un embudo. Se desglosa en una serie de capas con orden concreto. Cada una de ellas está especializada en tareas concretas para obtener cierta información de las entradas. Esta configuración permite a la red aprender representaciones progresivamente más abstractas y complejas.
 
@@ -101,10 +99,9 @@ Llegamos a la parte final de nuestra arquitectura. Después de haber extraído t
 
 Intuitivamente, podemos pensar en la arquitectura de una red convolucional como dos partes especializadas. La primera, que se encarga de extraer características útiles para identificar a las diferentes clases, lo cual tiene un coste computacional muy alto empleando arquitecturas tradicionales. Y la segunda, que se encarga de procesar esa información "masticada" previamente por el bloque convolucional, siendo capaz de inferir la pertenencia a cada clase.
 
-
-
-\section{Funcionamiento Interno: Filtrado, Stride y Padding}\label{sec:funcionamiento_interno_cnn}
-
+\section{Funcionamiento interno de las redes convolucionales}
+\label{sec:funcionamiento_interno_cnn}
+\subsection{Filtrado, stride y padding}
 Como hemos ido viendo a lo largo de las secciones anteriores, las redes convolucionales se basan en la operación de convolución, donde un filtro se desplaza sobre la entrada y aplica una transformación con la que obtiene características concretas. Además, cada uno de estos filtros puede transformar dimensionalmente la entrada que reciben, reduciéndola, estirándola, etc. Por ello, a la hora de entrenar nuestros modelos, las dimensiones de los filtros, así como la forma en que los desplazamos por las entradas son hiperparámetros\footnote{Los hiperparámetros son parámetros de un modelo o del proceso de entrenamiento que \textbf{no se aprenden automáticamente} durante el entrenamiento, sino que los definimos nosotros previamente. Por ejemplo: el número de capas, la tasa de aprendizaje o el número de filtros a utilizar \cite{dl__goodfellow_2016}.} de configuración muy importantes, que pueden afectar directamente a la capacidad de la red para aprender y a la eficiencia computacional.
 
 \paragraph{Dimensiones del filtro}
@@ -137,29 +134,169 @@ En una convolución, al aplicar un kernel sobre una imagen, los píxeles situado
 
 De esta forma, diseñar las capas convolucionales de nuestra red se convierte en un meticuloso trabajo artesanal para ajustar estos hiperparámetros de modo que la potencia del modelo y su eficiencia computacional estén equilibrados \cite{dl_python__chollet_2021, dl_fundamentos__casas_roma_2020, dl__goodfellow_2016}.
 
-
-
-\section{Aprendizaje y Optimización de Filtros}\label{sec:ajuste_parametros_cnn}
-
+\section{Aprendizaje y optimización de filtros}
+\label{sec:ajuste_parametros_cnn}
 El verdadero poder de las redes convolucionales reside en su capacidad de aprender de forma automática los filtros adecuados para extraer las características específicas que le permitan discernir adecuadamente entre las diferentes clases. Aquí entra en juego nuestro algoritmo de aprendizaje por antonomasia, la retropropagación. Al igual que los modelos tradicionales ajustan los pesos sus conexiones en base al error obtenido, los modelos convolucionales aprovechan estas iteraciones para afinar sus filtros.
 
 \paragraph{Retropropagación en las capas convolucionales}
 
 El aprendizaje de los filtros sigue el mismo principio que en modelos tradicionales: los pesos (en este caso, los valores de los kernels) se inicializan aleatoriamente y se ajustan iterativamente mediante el algoritmo de retropropagación del error (\ref{sec:retropropagacion}).
-La retropropagación permite calcular el gradiente de la función de pérdida con respecto a cada parámetro de la red, propagando los errores desde la capa de salida hacia las capas anteriores. Este gradiente se usa para actualizar los pesos en la dirección que se minimiza la pérdida.
+La retropropagación permite calcular el gradiente de la función de pérdida con respecto a cada parámetro de la red, propagando los errores desde la capa de salida hacia las capas anteriores. Este gradiente se usa para actualizar los pesos en la dirección que se minimiza la pérdida. Obteniendo así, un modelo lleno de filtros capaces de detectar los diferentes patrones que presentan nuestros conjuntos de entrenamiento.
 
 \paragraph{Optimización}
 
 Para actualizar los parámetros, se utilizan algoritmos de optimización basados en el descenso del gradiente \ref{sec:descenso_gradiente}. El descenso de gradiente estocástico (SGD) es la técnica clásica, donde los parámetros se actualizan tras cada minibatch de datos.
 En la práctica, se emplean variantes más sofisticadas como Adam, RMSProp o Momentum, que aceleran la convergencia y mejoran la estabilidad del entrenamiento \cite{dl_python__chollet_2021}.
 
+\section{Representaciones internas y activaciones}
+\label{sec:representaciones_internas}
 
+Las redes neuronales convolucionales aprenden representaciones internas de los datos de
+entrada a través de las activaciones producidas por sus diferentes capas. Estas activaciones
+constituyen la base del conocimiento del modelo y reflejan el tipo de características que la
+red considera relevantes para la tarea de clasificación o reconocimiento.
 
-\subsection{Visualización de activaciones}
+En las primeras capas convolucionales suelen observarse activaciones asociadas a patrones
+simples, como bordes, esquinas o texturas básicas. A medida que la información se propaga a
+capas más profundas, estas representaciones se combinan para formar descriptores cada vez
+más abstractos, como formas, partes de objetos u objetos parciales
+\cite{dl_python__chollet_2021}.
 
-{\color{red} AÑADIR IMÁGENES DE LAS ACTIVACIONES}
+El estudio de estas representaciones internas permite obtener una primera intuición sobre el
+comportamiento del modelo y sobre el tipo de información que se va preservando o descartando
+a lo largo de la red. No obstante, la inspección directa de los valores de activación resulta
+limitada, ya que no siempre es evidente qué regiones de la entrada son determinantes en la
+toma de decisiones del modelo.
 
-Una forma de comprender mejor cómo aprende nuestro modelo, y así, lograr un mejor ajuste de hiperparámetros o detectar posibles problemas en el entrenamiento, es mediante una técnica conocida como la visualización de activaciones. Consiste en inspeccionar los mapas de características que produce cada filtro en distintas capas de la red al procesar una imagen.
-En las primeras capas suelen observarse activaciones asociadas a bordes y texturas simples, mientras que en capas más profundas aparecen representaciones cada vez más abstractas, como formas u objetos parciales \cite{dl_python__chollet_2021}.
+\subsection{Visualización de representaciones internas}
+\label{sec:visualizacion_representaciones}
 
+Con el objetivo de superar estas limitaciones, se han desarrollado distintas técnicas de
+visualización que permiten proyectar la información aprendida por la red a un dominio
+interpretable para el observador. Estas técnicas facilitan el análisis del tipo de
+características que se activan en cada capa y permiten relacionar las activaciones internas
+con regiones concretas de la imagen de entrada.
 
+En muchas áreas de conocimiento se utiliza el término \textbf{caja negra} para referirse a
+sistemas complejos que producen una salida coherente a partir de una entrada dada, pero cuyo
+funcionamiento interno resulta difícilmente interpretable. Este es el caso de las redes
+neuronales profundas, donde el conocimiento del modelo se encuentra distribuido en los pesos
+y activaciones de múltiples capas interconectadas.
+
+Por este motivo, a lo largo del tiempo se han propuesto diversos métodos de análisis que
+permiten comprender mejor qué ocurre en el interior de estos modelos. El uso de estas
+herramientas no solo contribuye a una mayor interpretabilidad, sino que también facilita la
+comparación entre arquitecturas y el ajuste más preciso de los hiperparámetros del modelo
+\cite{dl_python__chollet_2021, dl__goodfellow_2016}.
+
+\subsection{Herramientas de visualización}
+\label{sec:herramientas_visualizacion}
+
+Las técnicas de visualización más utilizadas en la literatura de redes neuronales profundas
+pueden clasificarse, de forma general, en dos grandes grupos. Por un lado, aquellas que se
+basan en la información obtenida durante la propagación hacia adelante (\textit{forward}) de
+la red, como los mapas de características y las activaciones neuronales. Por otro lado, las
+técnicas que emplean información del gradiente durante la retropropagación para identificar
+las regiones más influyentes en la decisión del modelo.
+
+\paragraph{Mapas de características}
+
+Los mapas de características representan la salida de los filtros de una capa convolucional.
+Cada mapa refleja la activación de un filtro concreto ante distintas regiones de la imagen de
+entrada, permitiendo observar qué patrones locales han sido detectados por la red.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/ejemplos/mapa_caracterisicas_con_kernel.png}
+	\caption{Mapa de características obtenido al pasar un kernel de una capa convolucional por una imagen de entrada.}
+	\label{fig:mapa_caracterisitcas_kernel}
+\end{figure}
+
+En las primeras capas suelen aparecer activaciones asociadas a bordes, esquinas o texturas
+simples. Conforme se avanza en profundidad dentro de la red, los mapas de características
+reflejan representaciones cada vez más abstractas, desde contornos y formas geométricas hasta
+estructuras más complejas \cite{nn_dl__michael_nielsen_2015}.
+
+La visualización de estos mapas permite identificar qué filtros destacan regiones relevantes
+de la entrada y comprender mejor cómo la red interpreta la información visual.
+
+\paragraph{Visualización de activaciones por capa}
+
+El análisis de las activaciones por capa permite estudiar cómo la información se transforma
+progresivamente a lo largo de la red. Mientras que las capas iniciales capturan patrones
+simples, las capas más profundas combinan estas representaciones para formar descriptores más
+abstractos y específicos de la tarea.
+
+La comparación de las activaciones generadas por distintos ejemplos de entrada permite
+analizar la consistencia de los patrones aprendidos y detectar posibles errores en el
+entrenamiento, siendo especialmente útil durante la fase de desarrollo del modelo.
+
+\paragraph{Métodos basados en gradientes}
+
+Los métodos basados en gradientes utilizan la información del gradiente de la función de
+pérdida con respecto a la entrada o a las activaciones internas para identificar qué regiones
+influyen con mayor peso en la salida del modelo. A diferencia de las visualizaciones basadas
+exclusivamente en activaciones, estas técnicas permiten relacionar directamente la decisión
+final de la red con regiones concretas de la imagen de entrada.
+
+\subparagraph{Mapas de saliencia (Saliency Maps).}
+
+La idea fundamental detrás de los mapas de saliencia es la siguiente: si un píxel
+concreto tiene una gran influencia sobre la predicción del modelo, entonces una pequeña
+variación en ese píxel producirá un cambio notable en la puntuación de la clase predicha.
+El gradiente mide exactamente esa sensibilidad. Por tanto, calcular la derivada de la
+puntuación de una clase con respecto a cada píxel de la imagen permite identificar qué
+regiones son más determinantes para la decisión del modelo
+\cite{visualizing__simonyan__2014}.
+
+Formalmente, dado que las imágenes de entrada tienen en general tres canales de color
+(RGB), el gradiente se calcula para cada canal por separado. Para obtener un único mapa
+2D interpretable, se toma el máximo valor absoluto a lo largo de los canales
+\cite{visualizing__simonyan__2014}:
+\begin{equation}
+	M_{ij} = \max_{c} \left|\frac{\partial S_c}{\partial I_{ij}^{(c)}}\right|
+\end{equation}
+donde $S_c$ representa la puntuación de la clase predicha, $I_{ij}^{(c)}$ el valor del
+píxel en la posición $(i,j)$ del canal $c$, y $M_{ij}$ el valor resultante en el mapa de
+saliencia. El valor absoluto se aplica porque lo relevante es la magnitud del efecto de
+cada píxel sobre la salida, independientemente de si su variación aumenta o disminuye
+dicha puntuación. El resultado es un mapa de calor en el que los valores de mayor
+magnitud indican los píxeles a los que la predicción es más sensible.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=1\linewidth]{figures/ejemplos/saliency_map.png}
+	\caption{Ejemplo de mapa de saliencia generado a partir del gradiente de la salida
+		con respecto a la imagen de entrada.}
+	\label{fig:mapa_saliencia}
+\end{figure}
+
+Esta técnica fue introducida por \citeauthor{visualizing__simonyan__2014}
+(\citeyear{visualizing__simonyan__2014}) para redes de clasificación de imágenes, siendo
+uno de los primeros métodos de visualización basados en gradiente aplicados a redes
+convolucionales profundas.
+
+Sin embargo, los mapas de saliencia presentan limitaciones importantes. Al operar
+directamente con los gradientes crudos de la red, los mapas resultantes suelen ser
+visualmente ruidosos y difíciles de interpretar, ya que son muy sensibles a
+variaciones locales en la imagen de entrada \cite{visualizing__simonyan__2014}.
+Además, en zonas donde la función de activación tiene gradiente nulo, como ocurre
+con la función ReLU cuando está saturada, los mapas pueden resultar poco
+informativos. Por otra parte, los píxeles destacados no siempre se corresponden con
+las regiones que un observador humano consideraría semánticamente relevantes para la
+predicción, es decir, la técnica mide sensibilidad local. Estas
+limitaciones motivaron el desarrollo de métodos más robustos, como Grad-CAM
+\cite{Selvaraju17-gradcam}, que incorpora información de capas convolucionales
+intermedias para producir mapas más suaves y coherentes.
+
+\subparagraph{Grad-CAM (Gradient-weighted Class Activation Mapping).}
+
+Grad-CAM consiste en generar un mapa de calor ponderando los mapas de características de las
+últimas capas convolucionales con los gradientes asociados a la clase predicha. El resultado
+es una visualización superpuesta a la imagen original que indica qué regiones fueron
+determinantes en la decisión de la red \cite{Selvaraju17-gradcam}.
+
+Estas metodologías resultan especialmente relevantes en aplicaciones críticas, como la
+medicina, la conducción autónoma o los sistemas de seguridad, donde es fundamental justificar
+las decisiones tomadas por el modelo
+\cite{examples_nn__kulik_2009, conv_nn_face_recog__chowanda_2019, slam_vehicles__saleem_2023}.
